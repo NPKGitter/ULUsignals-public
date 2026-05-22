@@ -25,7 +25,7 @@ jobs:
 
       - name: Upload files to S3
         run: |
-          aws s3 sync . s3://ulusignalos.com \
+          aws s3 sync . s3://ulusignals.com \ 
             --delete \
             --exclude ".git/*" \
             --exclude ".github/*"
