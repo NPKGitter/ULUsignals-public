@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ULUsignalOS Audience Intelligence Operating System</title>
-  <meta name="description" content="ULU signalOS home page" />
+  <title>ULU signals audience intelligence operating system</title>
+  <meta name="description" content="ULU signals splash page" />
   <link rel="icon" type="image/png" sizes="32x32" href="../images/SignalOS-favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +31,9 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   margin: 0;
   font-family: "Inter", system-ui, sans-serif;
   background:
@@ -43,7 +46,7 @@ body {
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 .container { width: min(calc(100% - 32px), var(--container)); margin: 0 auto; }
-.site-shell { overflow: clip; }
+.site-shell { width: 100%;max-width: 100%;overflow-x: hidden; }
 
 .announcement-bar {
   display: flex; align-items: center; justify-content: center; gap: 12px;
@@ -70,10 +73,13 @@ img { max-width: 100%; display: block; }
 .brand {
   display: flex;
   align-items: center;
+  min-width: 0;
+  max-width: 100%;
 }
 .brand-logo {
-  height: 50px;   /* adjust as needed */
+  height: 60px;   /* adjust as needed */
   width: auto;
+  max-width: min(100%, 360px);
   display: block;
 }
 .brand-text { font-size: 18px;margin-left: 10px;}
@@ -137,7 +143,7 @@ img { max-width: 100%; display: block; }
 .metricdark-card {position:relative;padding: 18px; border-radius: 20px; background: var(--panel);border: 1px solid var(--border);backdrop-filter: blur(18px);}
 .metricdark-card strong { display: block; font-size: 26px; margin-bottom: 10px; }
 .metricdark-card span { color: var(--muted); font-size: 1.4em; }
-
+.pullquoteone {padding: 60px 30px 0px 30px; color:#ffffff;opacity:85%; text-align:center;font-size: 1.9em; line-height:1.4em;font-style:italic;font-weight: 400; letter-spacing: .08em;}
 .hero-visual {
   position: relative; min-height: 120px; padding: 28px;
   border-radius: 30px; border: 1px solid rgba(255,255,255,.08); background:
@@ -200,6 +206,8 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
 }
 
 .feature-tabs-section, .capabilities-section, .showcase-section, .faq-section, .cta-section { padding: 72px 0; }
+.capabilities-section-two { padding: 36px 0; }
+.faq-section-two { padding: 36px 0px 54px 0px; }
 .section-heading { max-width: 870px; margin-bottom: 34px; }
 .section-heading.centered { text-align: center; margin: 0 auto 34px; }
 .section-heading h2, .cta-card h2 { font-size: clamp(2.2rem, 4vw, 4.2rem); }
@@ -272,8 +280,61 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
 .image-three { background: linear-gradient(135deg, rgba(134,239,172,.16), rgba(79,227,255,.08)); }
 .showcase-card a { color: #d9e0ff; font-weight: 600; }
 
-.faq-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 24px; align-items: start; }
-.faq-list { display: grid; gap: 14px; }
+/* FAQ layout */
+.faq-section .faq-grid {
+  display: block;
+}
+
+.faq-section .section-heading {
+  max-width: 720px;
+  margin: 0 auto 28px;
+}
+
+.faq-section .faq-list {
+  gap: 14px;
+}
+
+.faq-section .faq-list.faq-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 22px;
+  align-items: start;
+}
+
+.faq-section .faq-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.faq-section-two .faq-grid {
+  display: block;
+}
+
+.faq-section-two .section-heading {
+  max-width: 720px;
+  margin: 0 auto 28px;
+}
+
+.faq-section-two .faq-list {
+  gap: 14px;
+}
+
+.faq-section-two .faq-list.faq-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 22px;
+  align-items: start;
+}
+
+.faq-section-two .faq-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
 .faq-list details { border-radius: 22px; padding: 18px 20px; }
 .faq-list summary { cursor: pointer; font-weight: 600; }
 .faq-list p { margin: 12px 0 0; }
@@ -372,8 +433,40 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fo
   opacity: 0.92;
 }
 
+.footer-social {display: flex;flex-direction: row;align-items: center;justify-content: flex-start;gap: 12px;margin-top: 12px;flex-wrap: nowrap;}
+.footer-social .social-btn {width: 34px;height: 34px;min-width: 34px;max-width: 34px;flex: 0 0 34px;aspect-ratio: 1 / 1;border-radius: 50%;border: 1px solid rgba(255,255,255,0.2);background: rgba(255,255,255,0.06);color: #ffffff;display: inline-flex;align-items: center;justify-content: center;margin: 0;padding: 0;line-height: 1;text-decoration: none;}
+.footer-social button {width: 34px;height: 34px;border-radius: 999px;border: 1px solid rgba(255,255,255,0.2);background: rgba(255,255,255,0.06);color: #ffffff;cursor: pointer;transition: 0.2s ease;}
+.footer-social button:hover {background: rgba(255,255,255,0.12);transform: translateY(-2px);}
+.footer-social a {width: 100%;height: 100%;display: flex;align-items: center;justify-content: center;}
+.footer-social i {font-size: 16px;color: #ffffff;display: inline-block;line-height: 1;}
+.footer-social .social-btn i {font-size: 16px;line-height: 1;display: block;}
+.social-btn {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.06);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+  text-decoration: none;
+}
+
+.social-btn:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+
+.social-btn i {
+  font-size: 20px;
+  line-height: 1;
+}
+
 @media (max-width: 1100px) {
-  .hero-grid, .tab-panel, .capability-grid, .faq-grid, .footer-grid {
+  .hero-grid, .tab-panel, .capability-grid, .footer-grid {
     grid-template-columns: 1fr;
   }
   .hero-visual { min-height: 200px; }
@@ -560,42 +653,34 @@ body.modal-open {
   .footer-grid > div:nth-child(2) p {max-width: 100%;margin: 0;}
 }
 
+@media (max-width: 900px) {
+  .faq-section .faq-list.faq-columns {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+
+  .faq-section .faq-column {
+    width: 100%;
+  }
+  
+    .faq-section-two .faq-list.faq-columns {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+  
+    .faq-section-two .faq-column {
+    width: 100%;
+  }
+
+  .footertext {text-align:center;}
+}
+
 @media (max-width: 780px) {
   .modal-backdrop {padding: 16px;}
   .modal-dialog {grid-template-columns: 1fr;width: min(560px, 100%);max-height: calc(100vh - 32px);overflow-y: auto;padding:0px 0px 50px 0px;}
   .modal-media {padding: 70px 50px 0;}
   .modal-content {padding: 22px 20px 24px;}
   .modal-submit-btn {width: 100%;justify-self: stretch;}
-}
-
-@media (max-width: 640px) {
-  .main-footer {padding: 28px 22px;}
-  .footer-grid {grid-template-columns: 1fr;gap: 20px;}
-  .footer-grid > div:nth-child(2) p {line-height: 1.35;}
-  .main-footer a {margin-bottom: 8px;}
-  .brand-logo {height: 44px;width: auto;}
-}
-
-.announcement-bar {position: relative;display: flex;align-items: center;justify-content: flex-start;width: 100%;min-height: 38px;padding: 0 16px;box-sizing: border-box;overflow: hidden;}
-.back-link {position: relative;z-index: 3;display: inline-flex;align-items: center;gap: 5px;flex: 0 0 auto;margin: 0;padding: 0;font-size: 10px;line-height: 1;color: #cccccc;text-decoration: none;white-space: nowrap;opacity: 0.85;}
-.back-link i {font-size: 9px;}
-.back-link:hover {opacity: 1;text-decoration: underline;}
-.announcement-center {position: absolute;left: 50%;transform: translateX(-50%);display: inline-flex;align-items: center;gap: 10px;white-space: nowrap;z-index: 1;}
-.footer-brand {display: flex;flex-direction: column;align-items: center;gap: 10px;}
-.footer-social {display: flex;gap: 12px;margin-top: -2px;}
-.footer-social button {width: 34px;height: 34px;border-radius: 999px;border: 1px solid rgba(255,255,255,0.2);background: rgba(255,255,255,0.06);color: #ffffff;cursor: pointer;transition: 0.2s ease;}
-.footer-social button:hover {background: rgba(255,255,255,0.12);transform: translateY(-2px);}
-.footer-social a {width: 100%;height: 100%;display: flex;align-items: center;justify-content: center;}
-.faq-section .faq-grid {display: block;}
-.faq-section .section-heading {max-width: 720px;margin-bottom: 28px;}
-.faq-section .faq-columns {display: grid;grid-template-columns: repeat(2, minmax(0, 1fr));gap: 0 22px;align-items: start;}
-.faq-section .faq-column {display: flex;flex-direction: column;gap: 14px;}
-.faq-section .faq-column details {margin: 0;}
-.footertext {text-align:left;}
-
-@media (max-width: 900px) {
-  .faq-section .faq-columns {grid-template-columns: 1fr;gap: 14px;}
-  .footertext {text-align:center;}
 }
 
 @media (max-width: 768px) {
@@ -605,6 +690,27 @@ body.modal-open {
   .back-link i {font-size: 11px;}
   .announcement-center {gap: 8px;font-size: 12px;}
 }
+
+@media (max-width: 640px) {
+  .main-footer {padding: 28px 22px;}
+  .footer-grid {grid-template-columns: 1fr;gap: 20px;}
+  .footer-grid > div:nth-child(2) p {line-height: 1.35;}
+  .main-footer a {margin-bottom: 8px;}
+  .brand-logo {height: auto;width: min(100%, 300px);max-width: calc(100vw - 96px);}
+  .nav-row {gap: 10px;}
+  .cta-actions {width: 100%;padding: 16px 0 !important;justify-content: center;}
+  .cta-actions .primary-btn {width: 100%;}
+  .pullquoteone {padding: 50px 20px 0px 20px; font-size: 1.6em; line-height:1.4em;}
+.announcement-bar {position: relative;display: flex;align-items: center;justify-content: flex-start;width: 100%;min-height: 38px;padding: 0 16px;box-sizing: border-box;overflow: hidden;}
+.back-link {position: relative;z-index: 3;display: inline-flex;align-items: center;gap: 5px;flex: 0 0 auto;margin: 0;padding: 0;font-size: 10px;line-height: 1;color: #cccccc;text-decoration: none;white-space: nowrap;opacity: 0.85;}
+.back-link i {font-size: 9px;}
+.back-link:hover {opacity: 1;text-decoration: underline;}
+.announcement-center {position: absolute;left: 50%;transform: translateX(-50%);display: inline-flex;align-items: center;gap: 10px;white-space: nowrap;z-index: 1;}
+.footer-brand {display: flex;flex-direction: column;align-items: center;gap: 10px;}
+.footertext {text-align:left;}
+
+}
+
 </style>
 </head>
 <body>
@@ -625,7 +731,7 @@ body.modal-open {
     <header class="main-header">
       <div class="container nav-row">
         <a class="brand" href="#top">
-  <img src="assets/ULUsignalOS-Logo-Audience-Intell-wh-trn.svg" alt="ULU signalOS logo" class="brand-logo">
+  <img src="assets/ULUsignals-Logo-Aud-Intell-whlet.svg" alt="ULU signals logo" class="brand-logo">
 </a>
 
         <nav class="desktop-nav">
@@ -638,7 +744,7 @@ body.modal-open {
 
         <div class="nav-actions">
           <a class="ghost-btn" href="#signup-modal" data-modal-open="signup-modal">Login</a>
-          <a class="primary-btn small" href="pricing.html">Get Started</a>
+          <a class="primary-btn small" href="pricing.html">View Pricing</a>
           <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
         </div>
       </div>
@@ -662,24 +768,24 @@ body.modal-open {
             <div class="headlinespacer"></div>
             <h2><span style="font-style:italic;">“ULUsignals helps you scale authentic one-to-one connection through audience intelligence.”</span></h2>
             <p class="hero-text">
-              <strong>Your full-time Content Coach...</strong> Your content, ads, website, and campaigns are constantly generating signals. You need to translate these market signals into strategy, to build content that drives engagement. ULU signalOS captures, analyzes, and transforms those signals into real-time audience intelligence, so you always know what’s working and what truly resonates with your audience.
+              <strong>Your full-time Content Coach...</strong> Your content, ads, website, and campaigns are constantly generating signals. You need to translate these market signals into strategy, to build content that drives engagement. ULU signals captures, analyzes, and transforms those signals into real-time audience intelligence, so you always know what’s working and what truly resonates with your audience.
             </p>
           </div>
 
           <div class="hero-visual">
 <img src="assets/signalphotocrowd1.jpg" alt="Every action creates a signal" class="heroimage">
-<div style="text-align:center;color:#bbbbbb;font-size:8pt;padding:5px 0px 0px 0px;">ULU signalOS does <strong>not</strong> collect personally identifiable information (PII)</div>
+<div style="text-align:center;color:#bbbbbb;font-size:8pt;padding:5px 0px 0px 0px;">ULU signals does <strong>not</strong> collect personally identifiable information (PII)</div>
           </div><!-- end hero-visual -->
            </div>
           </div>
-        </div><!-- end hero-section -->
-      </section>
+        </div>
+      </section><!-- end hero-section -->
 
-    <section class="capabilities-section" id="alignment">
+    <section class="capabilities-section-two" id="alignment">
         <div class="container">
           <div class="section-heading centered">
             <div class="eyebrow">Message Alignment</div>
-            <h2>ULU signalOS Aligns Every Message. Everywhere.</h2>
+            <h2>ULU signals Aligns Every Message. Everywhere.</h2>
             <p>
               Collect signals<span style="padding: 0 10px;">&#8226;</span>Identify patterns<span style="padding: 0 10px;">&#8226;</span>Understand audience behavior<span style="padding: 0 10px;">&#8226;</span>Improve resonance over time.
             </p>
@@ -690,18 +796,19 @@ body.modal-open {
               <img src="assets/multi-platforms.jpg" alt="We analyze signals and identify what works" class="mock-img">
 
           </div>
+                          <div class="pullquoteone">                                      
+“The most effective communication no longer feels like broadcasting. It feels like one person speaking directly to another. ULUsignals is designed to identify and optimize the audience signals that create that connection at scale.”   
+</div>
         </div>
       </section>
 
            <section class="capabilities-section" id="capabilities">
-
         <div class="container">
-
           <div class="section-heading centered">
-                          <div style="min-height:40px:"></div>
+
             <div class="eyebrow">Actionable Insights</div>
             <h2>For Creators, Influencers and Businesses</h2>
-            <p>ULU signalOS gives you the signal interpretation of audience behavior so you operate with precision.</p>
+            <p>ULU signals gives you the signal interpretation of audience behavior so you operate with precision.</p>
           </div>
 
           <div class="capability-grid">
@@ -729,13 +836,17 @@ body.modal-open {
         </div>
       </section>
 
+         <div class="cta-actions" style="padding:0px 50px 0px 50px;">
+            <a class="primary-btn" style="margin-left:auto;margin-right:auto;width:200px;" href="pricing.html">View Pricing</a>
+          </div>
+
       <section class="feature-tabs-section" id="platform">
         <div class="container">
           <div class="section-heading centered">
             <div class="eyebrow">Under the Hood</div>
-            <h2>What you see inside ULU signalOS</h2>
+            <h2>What you see inside ULU signals</h2>
             <p>
-              SignalOS identifies and normalizes behavioral, engagement, and audience signals to uncover resonance patterns and momentum trends. By weighting signals based on interaction depth, the system delivers intelligent guidance that helps creators shape communications around proven audience engagement.
+              ULU signals identifies and normalizes behavioral, engagement, and audience signals to uncover resonance patterns and momentum trends. By weighting signals based on interaction depth, the system delivers intelligent guidance that helps creators shape communications around proven audience engagement.
             </p>
           </div>
 
@@ -752,7 +863,7 @@ body.modal-open {
                <article class="tab-panel active" id="tab-1" role="tabpanel">
                 <div class="tab-copy">
                   <h2>Pre-Launch Testing</h2>
-                  <p>Before you spend a dollar, ULU signalOS allows you to test new messaging against your real behavioral signals. You can see which concepts, tones, and narratives are most likely to perform, which reduces risk and increases confidence. This ensures your campaigns launch with a higher probability of success.</p>
+                  <p>Before you spend a dollar, ULU signals allows you to test new messaging against your real behavioral signals. You can see which concepts, tones, and narratives are most likely to perform, which reduces risk and increases confidence. This ensures your campaigns launch with a higher probability of success.</p>
                 </div>
                 <div class="tab-art placeholder-art">
                   <div class="art-card"><img src="assets/campaign-insights-v2.jpg" alt="pre-launch testing" class="mock-img"></div>
@@ -762,7 +873,7 @@ body.modal-open {
               <article class="tab-panel" id="tab-2" role="tabpanel">
                 <div class="tab-copy">
                   <h2>Signals Capture</h2>
-                  <p>ULU signalOS captures behavioral signals across your entire marketing ecosystem, including organic, social, digital, CTV, programmatic, and more. Every interaction, movement, and response is unified into a single intelligence layer, giving you a complete view of how your audience is engaging. Instead of fragmented data, you see the full picture of real audience behavior.</p>
+                  <p>ULU signals captures behavioral signals across your entire marketing ecosystem, including organic, social, digital, CTV, programmatic, and more. Every interaction, movement, and response is unified into a single intelligence layer, giving you a complete view of how your audience is engaging. Instead of fragmented data, you see the full picture of real audience behavior.</p>
                 </div>
                 <div class="tab-art placeholder-art">
                   <div class="art-card"><img src="assets/CC-womanovershoulder.jpg" alt="signals capture" class="mock-img"></div>
@@ -772,7 +883,7 @@ body.modal-open {
               <article class="tab-panel" id="tab-3" role="tabpanel">
                 <div class="tab-copy">
                   <h2>Resonance by Platform</h2>
-                  <p>ULU signalOS shows you exactly how your messaging resonates across each platform to reveal where engagement is strongest and where it falls off. You can quickly identify which channels are driving real attention, response, and intent. This allows you to prioritize spend and messaging where it performs best.</p>
+                  <p>ULU signals shows you exactly how your messaging resonates across each platform to reveal where engagement is strongest and where it falls off. You can quickly identify which channels are driving real attention, response, and intent. This allows you to prioritize spend and messaging where it performs best.</p>
                 </div>
                 <div class="tab-art placeholder-art">
                   <div class="art-card"><img src="assets/CC-podcaster-with-trans-bk.png" alt="resonance by platform" class="mock-img"></div>
@@ -782,7 +893,7 @@ body.modal-open {
               <article class="tab-panel" id="tab-4" role="tabpanel">
                 <div class="tab-copy">
                   <h2>Competitive Intelligence</h2>
-                  <p>ULU signalOS analyzes how your competitors are communicating. It breaks down their tone, themes, and messaging angles. You can see how their strategy evolves over time and how the market is responding to it. This gives you the ability to position your messaging more effectively and stay ahead of shifts in your category.</p>
+                  <p>ULU signals analyzes how your competitors are communicating. It breaks down their tone, themes, and messaging angles. You can see how their strategy evolves over time and how the market is responding to it. This gives you the ability to position your messaging more effectively and stay ahead of shifts in your category.</p>
                 </div>
                 <div class="tab-art placeholder-art">
                   <div class="art-card"><img src="assets/screens-layers-v4.png" alt="competitive intelligence" class="mock-img"></div>
@@ -792,7 +903,7 @@ body.modal-open {
               <article class="tab-panel" id="tab-5" role="tabpanel">
                 <div class="tab-copy">
                   <h2>Script & Messaging Intelligence</h2>
-                  <p>ULU signalOS uses your signals to guide what you say next, to help you write scripts, shape narratives, and align all outbound messaging. It identifies what’s resonating, what’s not, and where your communication is misaligned. The result is messaging that continuously improves and stays in sync with your audience.</p>
+                  <p>ULU signals uses your signals to guide what you say next, to help you write scripts, shape narratives, and align all outbound messaging. It identifies what’s resonating, what’s not, and where your communication is misaligned. The result is messaging that continuously improves and stays in sync with your audience.</p>
                 </div>
                 <div class="tab-art placeholder-art">
                   <div class="art-card"><img src="assets/CC-overshoulder.jpg" alt="script and messaging intelligence" class="mock-img"></div>
@@ -804,20 +915,20 @@ body.modal-open {
         </div>
       </section>
 
-      <section class="faq-section" id="faq">
+      <section class="faq-section-two" id="faq">
         <div class="container faq-grid">
           <div class="section-heading centered">
             <div class="eyebrow">FAQ</div>
-            <h2>Everything You Need to Know About ULU signalOS</h2>
-            <p>Clear answers to how ULU signalOS works, who it’s for, and how our A.I. driven operating system helps you improve content and generate results.
+            <h2>Everything You Need to Know About ULU signals</h2>
+            <p>Clear answers to how ULU signals works, who it’s for, and how our A.I. driven operating system helps you improve content and generate results.
             </p>
           </div>
 
           <div class="faq-list faq-columns">
             <div class="faq-column">
               <details>
-                <summary>What is ULU signalOS?</summary>
-                <p>ULU signalOS is an audience intelligence system that analyzes how real people interact with your content, i.e., what they watch, skip, engage with, and respond to, and transforms those behavioral signals into clear communication guidance. By identifying patterns, tracking resonance, and understanding audience behavior over time, SignalOS helps creators align messaging to what their audience actually responds to.<br><br>Rather than creating content based on guesswork, SignalOS uses accumulated signal intelligence, behavioral mapping, and resonance tracking to guide:</p>
+                <summary>What is ULU signals?</summary>
+                <p>ULU signals is an audience intelligence system that analyzes how real people interact with your content, i.e., what they watch, skip, engage with, and respond to, and transforms those behavioral signals into clear communication guidance. By identifying patterns, tracking resonance, and understanding audience behavior over time, ULU signals helps creators align messaging to what their audience actually responds to.<br><br>Rather than creating content based on guesswork, ULU signals uses accumulated signal intelligence, behavioral mapping, and resonance tracking to guide:</p>
                 <ul>
                   <li>What's working</li>
                   <li>What's not</li>
@@ -827,14 +938,14 @@ body.modal-open {
               </details>
 
               <details>
-                <summary>How does ULU signalOS help me make better content?</summary>
-                <p>ULU signalOS utilizes A.I. to track audience behavior across your content and creates content recommendations based on the patterns it uncovers—what holds attention, what loses it, and what drives action. ULU signalOS delivers:</p>
+                <summary>How does ULU signals help me make better content?</summary>
+                <p>ULU signals utilizes A.I. to track audience behavior across your content and creates content recommendations based on the patterns it uncovers—what holds attention, what loses it, and what drives action. ULU signals delivers:</p>
                 <ul>
                   <li>Hooks that perform</li>
                   <li>Story structures and narratives that keep attention</li>
                   <li>Messaging that leads to clicks or conversions</li>
                 </ul>
-                <p>You’re no longer guessing. You’re improving based on real data and intelligent creative input from ULU signalOS.</p>
+                <p>You’re no longer guessing. You’re improving based on real data and intelligent creative input from ULU signals.</p>
               </details>
 
               <details>
@@ -846,7 +957,7 @@ body.modal-open {
                   <li>Creating consistently</li>
                   <li>Or operating at an advanced, enterprise level</li>
                 </ul>
-                <p>...ULU signalOS adapts to you. How Ask AL Helps:</p>
+                <p>...ULU signals adapts to you. How Ask AL Helps:</p>
                 <ul>
                   <li>Explains your data in plain language</li>
                   <li>Identifies what’s resonating with your audience</li>
@@ -854,41 +965,98 @@ body.modal-open {
                   <li>Helps you write scripts, messaging, and content</li>
                   <li>Keeps your messaging aligned as your signals evolve</li>
                 </ul>
-                <p>What This Means: You don’t need to be an expert. ULU signalOS—powered by Ask AL—acts like a coach, turning your signals into clear direction so you can improve as you go.</p>
+                <p>What This Means: You don’t need to be an expert. ULU signals—powered by Ask AL—acts like a coach, turning your signals into clear direction so you can improve as you go.</p>
               </details>
 
               <details>
-                <summary>Do I need to purchase media to use ULU signalOS?</summary>
-                <p>No. ULU signalOS is not an ad agency and does not buy media. You continue to plan, buy, and manage your media exactly as you do today, whether internally or through your existing agencies and platforms. To enable ULU signalOS, you simply assign ULU Technologies as an approved data partner within your social platforms. This allows ULU signalOS to securely access performance and behavioral signal data. Step-by-step instructions are provided in the platform.</p>
+                <summary>Do I need to purchase media to use ULU signals?</summary>
+                <p>No. ULU signals is not an ad agency and does not buy media. You continue to plan, buy, and manage your media exactly as you do today, whether internally or through your existing agencies and platforms. To enable ULU signals, you simply assign ULU Technologies as an approved data partner within your social platforms. This allows ULU signals to securely access performance and behavioral signal data. Step-by-step instructions are provided in the platform.</p>
               </details>
 
               <details>
                 <summary>Who owns the data?</summary>
-                <p>You do. Whether you’re a creator, small business, or enterprise organization, all signal data, insights, and learning generated through ULU signalOS belong to you. Your data lives within your own partitioned system and remains yours—regardless of who manages your campaigns.</p>
+                <p>You do. Whether you’re a creator, small business, or enterprise organization, all signal data, insights, and learning generated through ULU signals belong to you. Your data lives within your own partitioned system and remains yours—regardless of who manages your campaigns.</p>
               </details>
 
               <details>
-                <summary>What platforms does ULU signalOS support?</summary>
-                <p>ULU signalOS currently integrates with leading social media platforms, allowing you to capture and analyze behavioral signals from your content in real time. We are continuously expanding our platform support. Additional integrations—including advanced digital channels and Connected TV (CTV)—are already in development and scheduled to roll out through 2026. As ULU signalOS grows, so does your ability to unify signals and align messaging across your entire marketing ecosystem.</p>
+                <summary>What platforms does ULU signals support?</summary>
+                <p>ULU signals currently integrates with leading social media platforms, allowing you to capture and analyze behavioral signals from your content in real time. We are continuously expanding our platform support. Additional integrations—including advanced digital channels and Connected TV (CTV)—are already in development and scheduled to roll out through 2026. As ULU signals grows, so does your ability to unify signals and align messaging across your entire marketing ecosystem.</p>
               </details>
 
               <details>
-                <summary>What makes ULU signalOS different?</summary>
-                <p>ULU signalOS sits above your existing marketing, capturing behavioral signals from everything you put into the world and turning them into a continuous learning system. It doesn’t replace how you buy media. It makes everything you do smarter, more aligned, and more effective over time.</p>
+                <summary>What makes ULU signals different?</summary>
+                <p>ULU signals sits above your existing marketing, capturing behavioral signals from everything you put into the world and turning them into a continuous learning system. It doesn’t replace how you buy media. It makes everything you do smarter, more aligned, and more effective over time.</p>
               </details>
             </div>
 
             <div class="faq-column">
               <details>
-                <summary>Who is ULU signalOS for?</summary>
-                <p>ULU signalOS is built for:</p>
+                <summary>Who is ULU signals for?</summary>
+                <p>ULU signals is built for:</p>
                 <ul>
                   <li>Creators who want to produce more content and grow faster.</li>
                   <li>Small businesses who want to bring marketing in-house.</li>
                   <li>Enterprises that want complete alignment with all their messaging.</li>
-                  <li>Start-ups and entrepreneurs who use ULU signalOS as their own in-house marketing team.</li>
+                  <li>Start-ups and entrepreneurs who use ULU signals as their own in-house marketing team.</li>
                 </ul>
-                <p>If you’re posting content and trying to improve results, ULU signalOS is designed for you. It creates scripts and narratives for you according to its proprietary A.I. signal intelligence analysis.</p>
+                <p>If you’re posting content and trying to improve results, ULU signals is designed for you. It creates scripts and narratives for you according to its proprietary A.I. signal intelligence analysis.</p>
+              </details>
+              
+              <details>
+                <summary>What message types work best for ULU signals?</summary>
+<h3>Creator / Video / Social Content</h3>
+<ul>
+<li>Short-Form Video Series</li>
+<li>TikTok Campaigns</li>
+<li>Instagram Content</li>
+<li>YouTube Ads</li>
+<li>YouTube Shorts</li>
+<li>Social Media Ads</li>
+<li>Influencer Campaigns</li>
+<li>Episodic Content</li>
+<li>Documentary Series</li>
+<li>Drama Series Concepts</li>
+<li>Entertainment Marketing</li>
+<li>Podcast Scripts</li>
+<li>Video Scripts</li>
+<li>Commercial Scripts</li>
+<li>Educational Series</li>
+<li>Community Messaging</li>
+<li>Behavioral Response Campaigns</li>
+<li>Personalized Creative Assets</li>
+<li>Signal-Aligned Creative</li>
+</ul>
+
+<h3>Business / Marketing Content</h3>
+<ul>
+<li>Streaming TV Ads</li>
+<li>TV Commercials</li>
+<li>Facebook Campaigns</li>
+<li>LinkedIn Messaging</li>
+<li>Display Advertising</li>
+<li>Retargeting Ads</li>
+<li>Email Campaigns</li>
+<li>SMS Campaigns</li>
+<li>Website Messaging</li>
+<li>Landing Pages</li>
+<li>Sales Funnels</li>
+<li>Brand Storytelling</li>
+<li>Press Releases</li>
+<li>Newsletters</li>
+<li>Blog Articles</li>
+<li>SEO Content</li>
+<li>Thought Leadership</li>
+<li>Case Studies</li>
+<li>Event Promotions</li>
+<li>Webinar Content</li>
+<li>Recruiting Campaigns</li>
+<li>Investor Messaging</li>
+<li>Public Relations Messaging</li>
+<li>Automated Campaign Flows</li>
+<li>Cross-Channel Messaging</li>
+<li>Omnichannel Campaigns</li>
+<li>Customer Retention Campaigns</li>
+</ul>
               </details>
 
               <details>
@@ -902,41 +1070,43 @@ body.modal-open {
               </details>
 
               <details>
-                <summary>Can I make money with ULU signalOS?</summary>
+                <summary>Can I make money with ULU signals?</summary>
                 <p>Yes, you can join our affiliate program. When you join, you receive your own affiliate link. This enables you to:</p>
                 <ul>
-                  <li>Share ULU signalOS with other creators</li>
+                  <li>Share ULU signals with other creators</li>
                   <li>Promote it in your content</li>
                   <li>Introduce it to business owners who could benefit from it.</li>
                   <li>Earn a recurring commission for every active subscriber you refer.</li>
                 </ul>
-                <p>The more creators you bring in who stay active, the more recurring income you generate. (Details available at affiliate sign-up.) When you join ULU signalOS, you get:</p>
+                <p>The more creators you bring in who stay active, the more recurring income you generate. (Details available at affiliate sign-up.) When you join ULU signals, you get:</p>
                 <ul>
-                  <li>Full access to the ULU signalOS platform</li>
+                  <li>Full access to the ULU signals platform</li>
                   <li>Real-time signal insights from your content</li>
                   <li>A personal affiliate link</li>
                   <li>A creator Brand Voice Command Center (scripts, examples, guidance)</li>
                   <li>Ongoing direction on what to create next</li>
                 </ul>
-                <p>The affiliate opportunity is optional, but available if you want to earn from it. You can use ULU signalOS purely as a tool to:</p>
+                <p>The affiliate opportunity is optional, but available if you want to earn from it. You can use ULU signals purely as a tool to:</p>
                 <ul>
                   <li>Improve your content</li>
                   <li>Understand your audience</li>
                   <li>Write scripts and storylines for you</li>
                   <li>Increase performance</li>
                 </ul>
-                <p>Everything is designed to help you improve and monetize your content. ULU signalOS provides real insights into audience behavior and helps you improve content performance. The earning opportunity exists because creators naturally share tools that help them succeed.</p>
+                <p>Everything is designed to help you improve and monetize your content. ULU signals provides real insights into audience behavior and helps you improve content performance. The earning opportunity exists because creators naturally share tools that help them succeed.</p>
               </details>
 
               <details>
                 <summary>How quickly will I see results?</summary>
-                <p>You can start generating insights from Day One—using ULU signalOS to guide what you create as you begin collecting signals. On supported platforms, historical data can also be pulled in, giving you an immediate head start based on past performance. The more content you create and analyze, the more accurate and valuable your system becomes.</p>
+                <p>You can start generating insights from Day One—using ULU signals to guide what you create as you begin collecting signals. On supported platforms, historical data can also be pulled in, giving you an immediate head start based on past performance. The more content you create and analyze, the more accurate and valuable your system becomes.</p>
               </details>
 
               <details>
                 <summary>Can I cancel at any time?</summary>
                 <p>Yes. You can cancel your subscription at any time. There are no long-term commitments.</p>
               </details>
+              
+   
             </div>
           </div>
         </div>
@@ -950,7 +1120,7 @@ body.modal-open {
             <p><span style="font-size:1.3em;">Limited time introductory offer: 50% off regular subscription price when you sign up for 3-month trial.</span></p>
           </div>
           <div class="cta-actions" style="padding:20px 50px 20px 50px;">
-            <a class="primary-btn" href="pricing.html">Sign Up Now</a>
+            <a class="primary-btn" href="pricing.html">View Pricing</a>
           </div>
         </div>
       </section>
@@ -960,27 +1130,23 @@ body.modal-open {
   <div class="container footer-grid">
 <div class="footer-brand">
   <a class="brand" href="#top">
-    <img src="assets/ULUsignalOS-Logo-Audience-Intell-wh-trn.svg" alt="ULU signalOS logo" class="brand-logo">
+    <img src="assets/ULUsignals-Logo-Aud-Intell-whlet.svg" alt="ULU signals logo" class="brand-logo">
   </a>
 
   <div class="footer-social">
-    <button>
-      <a href="https://www.facebook.com/ulusignalos" target="_blank">
-        <i class="fa-brands fa-facebook-f"></i>
-      </a>
-    </button>
-    <button>
-      <a href="https://linkedin.com/company/ulusignalos" target="_blank">
-        <i class="fa-brands fa-linkedin"></i>
-      </a>
-    </button>
-    <button>
-      <a href="https://x.com/ulusignalOS" target="_blank">
-        <i class="fa-brands fa-x-twitter"></i>
-      </a>
-    </button>
+  <a href="https://www.facebook.com/ulusignalos" target="_blank" class="social-btn">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
 
-  </div>
+  <a href="https://linkedin.com/company/ulusignalos" target="_blank" class="social-btn">
+    <i class="fa-brands fa-linkedin"></i>
+  </a>
+
+  <a href="https://x.com/ulusignalOS" target="_blank" class="social-btn">
+    <i class="fa-brands fa-x-twitter"></i>
+  </a>
+    </div>
+
 </div>
 
     <div>
@@ -1020,13 +1186,13 @@ body.modal-open {
           <span class="modal-kicker">Coming Soon!</span>
           <h2 id="signup-modal-title">Sign up for launch updates</h2>
           <p>
-            ULU signalOS is almost ready. Join the notification list and we will let you know when the platform is available.
+            ULU signals is almost ready. Join the notification list and we will let you know when the platform is available.
           </p>
 
           <form id="earlyAccessForm" class="modal-form" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="6b065775-fee7-41cf-8fb9-a6d711935aac">
-            <input type="hidden" name="subject" value="ULU signalOS waitlist signup">
-            <input type="hidden" name="from_name" value="ULU signalOS splash page">
+            <input type="hidden" name="subject" value="ULU signals waitlist signup">
+            <input type="hidden" name="from_name" value="ULU signals splash page">
             <input type="checkbox" name="botcheck" class="form-botcheck" tabindex="-1" autocomplete="off">
 
             <label class="sr-only" for="signup-name">Name</label>
@@ -1044,7 +1210,7 @@ body.modal-open {
 <div id="formSuccessMessage" class="form-success-message" hidden>
   <div class="form-success-icon">✓</div>
   <h3>Thank you!</h3>
-  <p>We’ll let you know when ULU signalOS is ready.</p>
+  <p>We’ll let you know when ULU signals is ready.</p>
 </div>
 
         </div>
