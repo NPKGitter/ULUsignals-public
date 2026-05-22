@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ULUsignalOS Audience Intelligence Operating System</title>
+  <meta name="description" content="ULU signalOS splash page" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/SignalOS-favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+
+:root {
+  --bg: #141837;
+  --bg-soft: rgba(15, 20, 39, 0.72);
+  --panel: rgba(12, 18, 34, 0.6);
+  --panel-strong: rgba(10, 14, 28, 0.9);
+  --border: rgba(255, 255, 255, 0.14);
+  --text: #eef2ff;
+  --muted: #a7b0c6;
+  --primary: #7c8cff;
+  --primary-2: #4fe3ff;
+  --success: #86efac;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --radius: 24px;
+  --container: 1200px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(93, 84, 255, 0.22), transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(79, 227, 255, 0.14), transparent 28%),
+    linear-gradient(180deg, #031027 0%, #051738 50%, #07204e 100%);
+  color: var(--text);
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.container { width: min(calc(100% - 32px), var(--container)); margin: 0 auto; }
+.site-shell { overflow: clip; }
+
+.announcement-bar {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  padding: 12px 16px; font-size: 14px; color: var(--muted);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: rgba(5, 8, 22, 0.85);
+  backdrop-filter: blur(18px);
+}
+.announcement-pill {
+  padding: 4px 8px; border-radius: 999px; background: rgba(124, 140, 255, 0.18);
+  color: #c7d1ff; font-size: 11px; font-weight: 700; letter-spacing: .08em;
+}
+.announcement-bar a { color: white; }
+
+.main-header {
+  position: sticky; top: 0; z-index: 30;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  background: rgba(5, 8, 22, 0.62);
+  backdrop-filter: blur(18px);
+}
+.nav-row {
+  min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 18px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+}
+.brand-logo {
+  height: 50px;   /* adjust as needed */
+  width: auto;
+  display: block;
+}
+.brand-text { font-size: 18px;margin-left: 10px;}
+.desktop-nav, .nav-actions { display: flex; align-items: center; gap: 22px; }
+.desktop-nav a { color: var(--muted); font-size: 15px; }
+.desktop-nav a:hover, .showcase-card a:hover, .announcement-bar a:hover { color: white; }
+.ghost-btn, .secondary-btn, .primary-btn {
+  border-radius: 999px; padding: 14px 20px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center;
+}
+.ghost-btn { border: 1px solid rgba(255,255,255,.1); color: #d7def2; }
+.primary-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: #071120; box-shadow: 0 14px 36px rgba(79, 227, 255, 0.22);white-space: nowrap;flex-shrink: 0;  min-width: 150px;text-align: center;}
+
+.primary-btn.small { padding: 12px 16px; }
+.secondary-btn {
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.03); color: white;
+}
+.menu-toggle {
+  display: none; background: none; border: 1px solid rgba(255,255,255,.12); color: white;
+  border-radius: 12px; width: 44px; height: 44px; font-size: 20px;
+}
+.mobile-nav {
+  display: flex; flex-direction: column; gap: 14px; padding: 0 16px 16px; border-top: 1px solid rgba(255,255,255,.06);
+}
+.mobile-nav[hidden] { display: none !important; }
+.mobile-nav a { color: var(--muted); }
+
+.hero-section { padding: 72px 0 42px; }
+.hero-grid {
+  display: grid; grid-template-columns: 1.08fr .92fr; gap: 36px; align-items: center;
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px; margin-bottom: 20px;
+  border-radius: 999px; border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03);
+  color: #cbd5ff; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+}
+.hero-copy h1, .section-heading h2, .cta-card h2 {
+  margin: 0; letter-spacing: -0.055em; line-height: .95;
+}
+.cta-card h9 {
+  margin: 0; letter-spacing: -0.055em; line-height: .95;
+}
+.hero-copy h1 { font-size: clamp(3.2rem, 7vw, 6.2rem); max-width: 10.5ch; }
+.hero-text, .section-heading p, .tab-copy p, .capability-card p, .showcase-card p, .faq-list p, .cta-card p, .footer-copy {
+  color: rgba(255,255,255,.85); line-height: 1.5; font-size: 18px;
+}
+.hero-text { max-width: 640px; margin: 22px 0 0; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin: 30px 0 28px; }
+.hero-metrics {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+.headlinespacer {min-height:15px;}
+.metric-card {
+  padding: 18px; border-radius: 20px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08);
+}
+.metric-card strong { display: block; font-size: 26px; margin-bottom: 10px; }
+.metric-card span { color: var(--muted); font-size: 14px; }
+
+.metricdark-card {position:relative;padding: 18px; border-radius: 20px; background: var(--panel);border: 1px solid var(--border);backdrop-filter: blur(18px);}
+.metricdark-card strong { display: block; font-size: 26px; margin-bottom: 10px; }
+.metricdark-card span { color: var(--muted); font-size: 1.4em; }
+
+.hero-visual {
+  position: relative; min-height: 120px; padding: 28px;
+  border-radius: 30px; border: 1px solid rgba(255,255,255,.08); background:
+  linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  box-shadow: var(--shadow);
+}
+.heroimage {border-radius: 10px; border: 1px solid rgba(255,255,255,.08);}
+.glow {
+  position: absolute; border-radius: 999px; filter: blur(20px); opacity: .9; pointer-events: none;
+}
+.glow-one {
+  width: 320px; height: 320px; top: -40px; right: -40px; background: radial-gradient(circle, rgba(124,140,255,.42), transparent 64%);
+}
+.glow-two {
+  width: 280px; height: 280px; bottom: 40px; left: -60px; background: radial-gradient(circle, rgba(79,227,255,.28), transparent 62%);
+}
+.code-card, .floating-panel, .capability-card, .showcase-card, .cta-card, .faq-list details, .feature-tabs, .main-footer {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+.code-card {
+  position: absolute; top: 44px; left: 32px; width: min(92%, 470px); border-radius: 24px; overflow: hidden;
+}
+.code-topbar {
+  display: flex; gap: 8px; padding: 16px 18px; border-bottom: 1px solid rgba(255,255,255,.06); background: rgba(255,255,255,.03);
+}
+.code-topbar span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.22); }
+.code-content { padding: 22px; }
+.code-label { color: #c7d1ff; font-size: 13px; margin-bottom: 12px; }
+pre { margin: 0; overflow: auto; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 14px; color: #dde6ff; line-height: 1.6; }
+
+.floating-panel {
+  position: absolute; border-radius: 24px; padding: 20px;
+}
+.panel-a { right: 34px; top: 215px; width: 250px; }
+.panel-b {
+  left: 54px; bottom: 36px; width: 290px; display: flex; gap: 18px; align-items: end;
+}
+.panel-tag, .card-label {
+  display: inline-block; margin-bottom: 10px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #c7d1ff;
+}
+.panel-a h3, .capability-card h3, .showcase-card h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -0.04em; }
+.panel-a p, .panel-b p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.mini-chart { display: flex; align-items: end; gap: 8px; min-height: 102px; }
+.mini-chart span {
+  width: 18px; border-radius: 999px 999px 6px 6px; background: linear-gradient(180deg, var(--primary-2), var(--primary));
+}
+.panel-b strong { display: block; font-size: 36px; margin-bottom: 6px; }
+
+.logo-strip { padding: 16px 0 30px; }
+.logo-row {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; align-items: center;
+}
+.logo-row span {
+  display: grid; place-items: center; min-height: 72px; border-radius: 18px; border: 1px solid rgba(255,255,255,.06);
+  background: rgba(255,255,255,.025); color: rgba(255,255,255,.56); font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+}
+
+.feature-tabs-section, .capabilities-section, .showcase-section, .faq-section, .cta-section { padding: 72px 0; }
+.section-heading { max-width: 870px; margin-bottom: 34px; }
+.section-heading.centered { text-align: center; margin: 0 auto 34px; }
+.section-heading h2, .cta-card h2 { font-size: clamp(2.2rem, 4vw, 4.2rem); }
+.cta-card h9 { font-size: clamp(1.8rem, 4vw, 4.2rem); }
+.faq-grid .section-heading h2 { line-height: 1.02; }
+.feature-tabs { padding: 20px; border-radius: 28px; }
+.tab-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.tab-btn {
+  border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); color: var(--muted);
+  padding: 12px 16px; border-radius: 999px; cursor: pointer; font: inherit;
+}
+.tab-btn.active { color: white; border-color: rgba(79,227,255,.28); background: rgba(79,227,255,.08); }
+.tab-panel {
+  display: none; grid-template-columns: .95fr 1.05fr; gap: 24px; align-items: center;
+}
+.tab-panel.active { display: grid; }
+.tab-copy ul {
+  padding-left: 18px; color: #dbe4ff; line-height: 1.9;
+}
+.placeholder-art {
+  min-height: 380px; border-radius: 24px; border: 1px solid rgba(255,255,255,.08); padding: 18px;
+  background: linear-gradient(135deg, rgba(124,140,255,.18), rgba(79,227,255,.08));
+}
+.alt-art { background: linear-gradient(135deg, rgba(111, 82, 255, .14), rgba(255, 122, 201, .08)); }
+.third-art { background: linear-gradient(135deg, rgba(79,227,255,.12), rgba(134,239,172,.08)); }
+.fourth-art { background: linear-gradient(135deg, rgba(255,196,87,.1), rgba(124,140,255,.12)); }
+.art-card {
+  width: 100%; height: 100%; min-height: 340px; border-radius: 18px; border: 1px solid rgba(255,255,255,.08);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.14), transparent 30%),
+    linear-gradient(135deg, rgba(9, 16, 32, .95), rgba(17, 27, 51, .92));
+}
+
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.capability-card {
+  border-radius: 26px; padding: 24px;
+}
+.capability-card.large { grid-column: span 1; }
+.mock-screen {
+  margin-top: 20px; min-height: 220px; border-radius: 18px; border: 1px solid rgba(255,255,255,.06);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
+    linear-gradient(135deg, rgba(124,140,255,.16), rgba(79,227,255,.12));
+}
+.screen-wide { min-height: 300px; }
+.mock-screen.alt { background: linear-gradient(135deg, rgba(255, 122, 201, .14), rgba(124,140,255,.12)); }
+.mock-img {width: 100%;height: 100%;object-fit: cover;display: block;}
+
+.insetsvg {position:relative;}
+.insetsvg-img {position:absolute;top:7px;right:10px;height: 45px;}
+
+.showcase-grid { display: grid; gap: 20px; }
+.showcase-cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+.showcase-card {
+  border-radius: 24px; overflow: hidden; padding: 18px;
+}
+.showcase-image {border-radius: 18px; margin-bottom: 18px; border: 1px solid rgba(255,255,255,.06);overflow: hidden;}
+.showcase-img {width: 100%;height: auto;display: block;}
+.image-one { background: linear-gradient(135deg, rgba(79,227,255,.18), rgba(124,140,255,.08)); }
+.image-two { background: linear-gradient(135deg, rgba(255,196,87,.16), rgba(255,122,201,.08)); }
+.image-three { background: linear-gradient(135deg, rgba(134,239,172,.16), rgba(79,227,255,.08)); }
+.showcase-card a { color: #d9e0ff; font-weight: 600; }
+
+.faq-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 24px; align-items: start; }
+.faq-list { display: grid; gap: 14px; }
+.faq-list details { border-radius: 22px; padding: 18px 20px; }
+.faq-list summary { cursor: pointer; font-weight: 600; }
+.faq-list p { margin: 12px 0 0; }
+
+.faq-list ul {
+  margin: 12px 0 0;
+  padding-left: 24px;
+}
+.faq-list li {
+  color: rgba(255,255,255,.85);
+  font-size: 15px;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.cta-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; border-radius: 30px; padding: 32px;
+}
+.cta-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.main-footer {
+  margin: 0 auto 34px;
+  width: min(calc(100% - 32px), var(--container));
+  border-radius: 30px;
+  padding: 34px 42px 26px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(160px, 1.1fr) minmax(280px, 2.2fr) minmax(140px, 1fr) minmax(220px, 1.4fr);
+  gap: 28px;
+  align-items: start;
+  text-align: center;
+}
+
+.footer-grid > div {
+  min-width: 0;
+}
+
+.footer-grid > div:nth-child(2) p {
+  margin: 6px auto 0;
+  line-height: 1.25;
+  max-width: 100%;
+}
+
+.footer-grid > div:nth-child(3),
+.footer-grid > div:nth-child(4) {
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-brand { margin-bottom: 12px; }
+.main-footer h4 { margin: 0 0 14px; }
+.main-footer a { display: block; color: var(--muted); margin-bottom: 10px;line-height: 1.2;overflow-wrap: break-word; }
+.main-footer a:hover { color: white; }
+
+.form-success-message {
+  margin-top: 20px;
+  padding: 28px 24px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  text-align: center;
+  color: #fff;
+}
+
+.form-success-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #7c8cff, #54d6ff);
+  color: #081a4b;
+}
+
+.form-success-message h3 {
+  margin: 0 0 10px;
+  font-size: 32px;
+  line-height: 1.15;
+}
+
+.form-success-message p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  opacity: 0.92;
+}
+
+@media (max-width: 1100px) {
+  .hero-grid, .tab-panel, .capability-grid, .faq-grid, .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-visual { min-height: 200px; }
+.showcase-cards {grid-template-columns: repeat(2, 1fr);}
+  .logo-row { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 980px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 20px;
+  }
+
+  .footer-grid > div:nth-child(2),
+  .footer-grid > div:nth-child(3),
+  .footer-grid > div:nth-child(4) {
+    margin-left: 0;
+    padding-top: 0;
+    min-width: 0;
+  }
+
+  .footer-grid > div:nth-child(2) p {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 780px) {
+  .desktop-nav, .ghost-btn, .primary-btn.small { display: none; }
+  .menu-toggle { display: inline-grid; place-items: center; }
+  .announcement-bar { flex-wrap: wrap; text-align: center; }
+  .hero-section { padding-top: 48px; }
+  .hero-copy h1 { max-width: 100%; }
+  .headlinespacer {min-height:1px;}
+  .hero-metrics, .logo-row { grid-template-columns: 1fr; }
+  .hero-visual { min-height: 200px; padding: 18px; }
+  .showcase-cards {grid-template-columns: 1fr;}
+  .code-card { left: 18px; top: 18px; width: calc(100% - 36px); }
+  .panel-a { right: 18px; top: 270px; width: calc(100% - 36px); }
+  .panel-b { left: 18px; bottom: 18px; width: calc(100% - 36px); }
+  .cta-card { flex-direction: column; align-items: flex-start; }
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.form-botcheck {
+  display: none !important;
+}
+
+
+.modal-backdrop[hidden] {
+  display: none !important;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(2, 7, 20, 0.72);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, visibility 0.18s ease;
+}
+
+.modal-backdrop.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-dialog {
+  position: relative;
+  width: min(960px, 100%);
+  padding:0px 0px 20px 0px;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+  gap: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(8, 20, 58, 0.98), rgba(9, 31, 78, 0.95));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.5);
+  transform: translateY(14px) scale(0.98);
+  transition: transform 0.18s ease;
+}
+
+.modal-backdrop.is-visible .modal-dialog {
+  transform: translateY(0) scale(1);
+}
+
+.modal-media {
+  min-height: 100%;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+}
+
+.modal-media-card {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.3);
+  box-shadow: 0 18px 40px rgba(0,0,0,.28);
+}
+
+.modal-media-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-content {
+  padding: 36px 36px 32px;
+}
+
+.modal-kicker {
+  display: inline-flex;
+  padding: 7px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  background: rgba(124, 140, 255, 0.18);
+  color: #d9e2ff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.modal-content h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.modal-content p {
+  margin: 0 0 22px;
+  color: rgba(255,255,255,.82);
+  line-height: 1.6;
+}
+
+.modal-form {
+  display: grid;
+  gap: 14px;
+}
+
+.modal-form input,
+.modal-form textarea {width: 100%;border: 1px solid rgba(255,255,255,.14);border-radius: 14px;background: rgba(255,255,255,.96);color: #102040;font: inherit;padding: 14px 16px;outline: none;transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;}
+.modal-form textarea {min-height: 130px;resize: vertical;}
+.modal-form input::placeholder,
+.modal-form textarea::placeholder {color: #67748a;}
+.modal-form input:focus,
+.modal-form textarea:focus {border-color: rgba(79, 227, 255, 0.95);box-shadow: 0 0 0 4px rgba(79, 227, 255, 0.16);}
+.modal-submit-btn {justify-self: end;min-width: 150px;border: 0;border-radius: 999px;padding: 14px 24px;font: inherit;font-weight: 700;cursor: pointer;color: #071120;background: linear-gradient(135deg, var(--primary), var(--primary-2));box-shadow: 0 14px 36px rgba(79, 227, 255, 0.22);}
+.modal-close {position: absolute;top: 16px;right: 16px;z-index: 2;width: 44px;height: 44px;border: 1px solid rgba(255,255,255,.12);border-radius: 999px;background: rgba(5, 8, 22, 0.55);color: #ffffff;font-size: 30px;line-height: 1;cursor: pointer;}
+.modal-close:hover {background: rgba(255,255,255,.12);}
+
+@media (max-width: 980px) {
+  .footer-grid {grid-template-columns: 1fr 1fr;gap: 24px 20px;}
+  .footer-grid > div:nth-child(2),
+  .footer-grid > div:nth-child(3),
+  .footer-grid > div:nth-child(4) {margin-left: 0;padding-top: 0;min-width: 0;}
+  .footer-grid > div:nth-child(2) p {max-width: 100%;margin: 0;}
+}
+
+@media (max-width: 780px) {
+  .modal-backdrop {padding: 16px;}
+  .modal-dialog {grid-template-columns: 1fr;width: min(560px, 100%);max-height: calc(100vh - 32px);overflow-y: auto;padding:0px 0px 50px 0px;}
+  .modal-media {padding: 70px 50px 0;}
+  .modal-content {padding: 22px 20px 24px;}
+  .modal-submit-btn {width: 100%;justify-self: stretch;}
+}
+
+@media (max-width: 640px) {
+  .main-footer {padding: 28px 22px;}
+  .footer-grid {grid-template-columns: 1fr;gap: 20px;}
+  .footer-grid > div:nth-child(2) p {line-height: 1.35;}
+  .main-footer a {margin-bottom: 8px;}
+  .brand-logo {height: 44px;width: auto;}
+}
+
+.announcement-bar {position: relative;display: flex;align-items: center;justify-content: flex-start;width: 100%;min-height: 38px;padding: 0 16px;box-sizing: border-box;overflow: hidden;}
+.back-link {position: relative;z-index: 3;display: inline-flex;align-items: center;gap: 5px;flex: 0 0 auto;margin: 0;padding: 0;font-size: 10px;line-height: 1;color: #cccccc;text-decoration: none;white-space: nowrap;opacity: 0.85;}
+.back-link i {font-size: 9px;}
+.back-link:hover {opacity: 1;text-decoration: underline;}
+.announcement-center {position: absolute;left: 50%;transform: translateX(-50%);display: inline-flex;align-items: center;gap: 10px;white-space: nowrap;z-index: 1;}
+.footer-brand {display: flex;flex-direction: column;align-items: center;gap: 10px;}
+.footer-social {display: flex;gap: 12px;margin-top: -2px;}
+.footer-social button {width: 34px;height: 34px;border-radius: 999px;border: 1px solid rgba(255,255,255,0.2);background: rgba(255,255,255,0.06);color: #ffffff;cursor: pointer;transition: 0.2s ease;}
+.footer-social button:hover {background: rgba(255,255,255,0.12);transform: translateY(-2px);}
+.footer-social a {width: 100%;height: 100%;display: flex;align-items: center;justify-content: center;}
+.faq-section .faq-grid {display: block;}
+.faq-section .section-heading {max-width: 720px;margin-bottom: 28px;}
+.faq-section .faq-columns {display: grid;grid-template-columns: repeat(2, minmax(0, 1fr));gap: 0 22px;align-items: start;}
+.faq-section .faq-column {display: flex;flex-direction: column;gap: 14px;}
+.faq-section .faq-column details {margin: 0;}
+.footertext {text-align:left;}
+
+@media (max-width: 900px) {
+  .faq-section .faq-columns {grid-template-columns: 1fr;gap: 14px;}
+  .footertext {text-align:center;}
+}
+
+@media (max-width: 768px) {
+    .announcement-bar {min-height: 42px;padding: 0 12px;}
+  .back-link {padding: 6px 7px;border-radius: 999px;background: rgba(255,255,255,0.06);border: 1px solid rgba(255,255,255,0.14);}
+  .back-text {display: none;}
+  .back-link i {font-size: 11px;}
+  .announcement-center {gap: 8px;font-size: 12px;}
+}
+</style>
+</head>
+<body>
+  <div class="site-shell">
+<div class="announcement-bar">
+  <a href="https://ulutechnologies.ai" class="back-link" aria-label="Back to ULU Technologies">
+    <i class="fa-solid fa-arrow-left"></i>
+    <span class="back-text">Back to ULU Technologies</span>
+  </a>
+
+  <div class="announcement-center">
+    <span class="announcement-pill">SPECIAL OFFER</span>
+    <span>Save 50% on 3-month subscription!</span>
+    <a href="pricing.html">Learn more</a>
+  </div>
+</div>
+
+    <header class="main-header">
+      <div class="container nav-row">
+        <a class="brand" href="#top">
+  <img src="assets/ULUsignalOS-Logo-Audience-Intell-wh-trn.svg" alt="ULU signalOS logo" class="brand-logo">
+</a>
+
+        <nav class="desktop-nav">
+        <a href="#alignment">Message Alignment</a>
+          <a href="#platform">Platform</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#faq">FAQ</a>
+        <a href="pricing.html">Pricing</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="ghost-btn" href="#signup-modal" data-modal-open="signup-modal">Login</a>
+          <a class="primary-btn small" href="pricing.html">Get Started</a>
+          <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+        </div>
+      </div>
+
+      <div class="mobile-nav" hidden>
+        <a href="#alignment">Message Alignment</a>
+        <a href="#platform">Platform</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#faq">FAQ</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#cta">Contact</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero-section">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">The operating system for audience intelligence</div>
+            <h1>Every Action Creates a Signal</h1>
+            <div class="headlinespacer"></div>
+            <h2>ULU signalOS turns those signals into strategy</h2>
+            <p class="hero-text">
+              <strong>Your full-time Content Coach...</strong> Your content, ads, website, and campaigns are constantly generating signals. You need to translate these market signals into strategy, to build content that drives engagement. ULU signalOS captures, analyzes, and transforms those signals into real-time audience intelligence, so you always know what’s working and what truly resonates with your audience.
+            </p>
+          </div>
+
+          <div class="hero-visual">
+<img src="assets/signalphotocrowd1.jpg" alt="Every action creates a signal" class="heroimage">
+<div style="text-align:center;color:#bbbbbb;font-size:8pt;padding:5px 0px 0px 0px;">ULU signalOS does <strong>not</strong> collect personally identifiable information (PII)</div>
+          </div><!-- end hero-visual -->
+           </div>
+          </div>
+        </div><!-- end hero-section -->
+      </section>
+
+    <section class="capabilities-section" id="alignment">
+        <div class="container">
+          <div class="section-heading centered">
+            <div class="eyebrow">Message Alignment</div>
+            <h2>ULU signalOS Aligns Every Message. Everywhere.</h2>
+            <p>
+              Collect signals<span style="padding: 0 10px;">&#8226;</span>Identify patterns<span style="padding: 0 10px;">&#8226;</span>Understand audience behavior<span style="padding: 0 10px;">&#8226;</span>Improve resonance over time.
+            </p>
+          </div>
+
+          <div class="feature-tabs">
+            
+              <img src="assets/multi-platforms.jpg" alt="We analyze signals and identify what works" class="mock-img">
+
+          </div>
+        </div>
+      </section>
+
+           <section class="capabilities-section" id="capabilities">
+
+        <div class="container">
+
+          <div class="section-heading centered">
+                          <div style="min-height:40px:"></div>
+            <div class="eyebrow">Actionable Insights</div>
+            <h2>For Creators, Influencers and Businesses</h2>
+            <p>ULU signalOS gives you the signal interpretation of audience behavior so you operate with precision.</p>
+          </div>
+
+          <div class="capability-grid">
+            <article class="capability-card">
+              <span class="card-label">Creators</span>
+              <h3>Drive Engagement</h3>
+              <p>Find out what content really drives your audience.</p>
+              <div class="mock-screen"> <img src="assets/BBB-creator.jpg" alt="creator" class="mock-img"></div>
+            </article>
+
+            <article class="capability-card">
+              <span class="card-label">Small Business</span>
+              <h3>Persuade Action</h3>
+              <p>See which messages convert attention into measurable outcomes.</p>
+              <div class="mock-screen"> <img src="assets/BBB-small-business.jpg" alt="small businesses" class="mock-img"></div>
+            </article>
+
+            <article class="capability-card">
+              <span class="card-label">Enterprise</span>
+              <h3>Build Belief</h3>
+              <p>Understand which narratives earn trust and deepen brand affinity.</p>
+             <div class="mock-screen"><img src="assets/BBB-corporate-photo.jpg" alt="corporate enterprises" class="mock-img"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-tabs-section" id="platform">
+        <div class="container">
+          <div class="section-heading centered">
+            <div class="eyebrow">Under the Hood</div>
+            <h2>What you see inside ULU signalOS</h2>
+            <p>
+              SignalOS identifies and normalizes behavioral, engagement, and audience signals to uncover resonance patterns and momentum trends. By weighting signals based on interaction depth, the system delivers intelligent guidance that helps creators shape communications around proven audience engagement.
+            </p>
+          </div>
+
+          <div class="feature-tabs">
+            <div class="tab-buttons" role="tablist" aria-label="Platform features">
+            <button class="tab-btn active" data-tab="tab-1" role="tab" aria-selected="true">Pre-Launch Testing</button>
+              <button class="tab-btn" data-tab="tab-2" role="tab" aria-selected="false">Signals Capture</button>
+              <button class="tab-btn" data-tab="tab-3" role="tab" aria-selected="false">Resonance by Platform</button>
+              <button class="tab-btn" data-tab="tab-4" role="tab" aria-selected="false">Competitive Intelligence</button>
+              <button class="tab-btn" data-tab="tab-5" role="tab" aria-selected="false">Script & Messaging Intelligence</button>
+            </div>
+
+            <div class="tab-panels">
+               <article class="tab-panel active" id="tab-1" role="tabpanel">
+                <div class="tab-copy">
+                  <h2>Pre-Launch Testing</h2>
+                  <p>Before you spend a dollar, ULU signalOS allows you to test new messaging against your real behavioral signals. You can see which concepts, tones, and narratives are most likely to perform, which reduces risk and increases confidence. This ensures your campaigns launch with a higher probability of success.</p>
+                </div>
+                <div class="tab-art placeholder-art">
+                  <div class="art-card"><img src="assets/campaign-insights-v2.jpg" alt="pre-launch testing" class="mock-img"></div>
+                </div>
+              </article>  
+              
+              <article class="tab-panel" id="tab-2" role="tabpanel">
+                <div class="tab-copy">
+                  <h2>Signals Capture</h2>
+                  <p>ULU signalOS captures behavioral signals across your entire marketing ecosystem, including organic, social, digital, CTV, programmatic, and more. Every interaction, movement, and response is unified into a single intelligence layer, giving you a complete view of how your audience is engaging. Instead of fragmented data, you see the full picture of real audience behavior.</p>
+                </div>
+                <div class="tab-art placeholder-art">
+                  <div class="art-card"><img src="assets/CC-womanovershoulder.jpg" alt="signals capture" class="mock-img"></div>
+                </div>
+              </article>
+
+              <article class="tab-panel" id="tab-3" role="tabpanel">
+                <div class="tab-copy">
+                  <h2>Resonance by Platform</h2>
+                  <p>ULU signalOS shows you exactly how your messaging resonates across each platform to reveal where engagement is strongest and where it falls off. You can quickly identify which channels are driving real attention, response, and intent. This allows you to prioritize spend and messaging where it performs best.</p>
+                </div>
+                <div class="tab-art placeholder-art">
+                  <div class="art-card"><img src="assets/CC-podcaster-with-trans-bk.png" alt="resonance by platform" class="mock-img"></div>
+                </div>
+              </article>
+
+              <article class="tab-panel" id="tab-4" role="tabpanel">
+                <div class="tab-copy">
+                  <h2>Competitive Intelligence</h2>
+                  <p>ULU signalOS analyzes how your competitors are communicating. It breaks down their tone, themes, and messaging angles. You can see how their strategy evolves over time and how the market is responding to it. This gives you the ability to position your messaging more effectively and stay ahead of shifts in your category.</p>
+                </div>
+                <div class="tab-art placeholder-art">
+                  <div class="art-card"><img src="assets/screens-layers-v4.png" alt="competitive intelligence" class="mock-img"></div>
+                </div>
+              </article>
+
+              <article class="tab-panel" id="tab-5" role="tabpanel">
+                <div class="tab-copy">
+                  <h2>Script & Messaging Intelligence</h2>
+                  <p>ULU signalOS uses your signals to guide what you say next, to help you write scripts, shape narratives, and align all outbound messaging. It identifies what’s resonating, what’s not, and where your communication is misaligned. The result is messaging that continuously improves and stays in sync with your audience.</p>
+                </div>
+                <div class="tab-art placeholder-art">
+                  <div class="art-card"><img src="assets/CC-overshoulder.jpg" alt="script and messaging intelligence" class="mock-img"></div>
+                </div>
+              </article>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section" id="faq">
+        <div class="container faq-grid">
+          <div class="section-heading centered">
+            <div class="eyebrow">FAQ</div>
+            <h2>Everything You Need to Know About ULU signalOS</h2>
+            <p>Clear answers to how ULU signalOS works, who it’s for, and how our A.I. driven operating system helps you improve content and generate results.
+            </p>
+          </div>
+
+          <div class="faq-list faq-columns">
+            <div class="faq-column">
+              <details>
+                <summary>What is ULU signalOS?</summary>
+                <p>ULU signalOS is an audience intelligence system that analyzes how real people interact with your content, i.e., what they watch, skip, engage with, and respond to, and transforms those behavioral signals into clear communication guidance. By identifying patterns, tracking resonance, and understanding audience behavior over time, SignalOS helps creators align messaging to what their audience actually responds to.<br><br>Rather than creating content based on guesswork, SignalOS uses accumulated signal intelligence, behavioral mapping, and resonance tracking to guide:</p>
+                <ul>
+                  <li>What's working</li>
+                  <li>What's not</li>
+                  <li>What direction your messaging should move next</li>
+                </ul>
+                <p>The result is a behavioral learning system that helps creators produce smarter, more aligned content with increasing precision over time.</p>
+              </details>
+
+              <details>
+                <summary>How does ULU signalOS help me make better content?</summary>
+                <p>ULU signalOS utilizes A.I. to track audience behavior across your content and creates content recommendations based on the patterns it uncovers—what holds attention, what loses it, and what drives action. ULU signalOS delivers:</p>
+                <ul>
+                  <li>Hooks that perform</li>
+                  <li>Story structures and narratives that keep attention</li>
+                  <li>Messaging that leads to clicks or conversions</li>
+                </ul>
+                <p>You’re no longer guessing. You’re improving based on real data and intelligent creative input from ULU signalOS.</p>
+              </details>
+
+              <details>
+                <summary>Do I need to be experienced to use this?</summary>
+                <p>No. With Ask AL, your built-in intelligence coach, you don’t need to know how to read data or interpret charts. AL explains what’s happening, why it matters, and what to do next—based on the exact signals in your system. Whether you’re:</p>
+                <ul>
+                  <li>Just starting out</li>
+                  <li>Posting occasionally</li>
+                  <li>Creating consistently</li>
+                  <li>Or operating at an advanced, enterprise level</li>
+                </ul>
+                <p>...ULU signalOS adapts to you. How Ask AL Helps:</p>
+                <ul>
+                  <li>Explains your data in plain language</li>
+                  <li>Identifies what’s resonating with your audience</li>
+                  <li>Recommends what to say or create next</li>
+                  <li>Helps you write scripts, messaging, and content</li>
+                  <li>Keeps your messaging aligned as your signals evolve</li>
+                </ul>
+                <p>What This Means: You don’t need to be an expert. ULU signalOS—powered by Ask AL—acts like a coach, turning your signals into clear direction so you can improve as you go.</p>
+              </details>
+
+              <details>
+                <summary>Do I need to purchase media to use ULU signalOS?</summary>
+                <p>No. ULU signalOS is not an ad agency and does not buy media. You continue to plan, buy, and manage your media exactly as you do today, whether internally or through your existing agencies and platforms. To enable ULU signalOS, you simply assign ULU Technologies as an approved data partner within your social platforms. This allows ULU signalOS to securely access performance and behavioral signal data. Step-by-step instructions are provided in the platform.</p>
+              </details>
+
+              <details>
+                <summary>Who owns the data?</summary>
+                <p>You do. Whether you’re a creator, small business, or enterprise organization, all signal data, insights, and learning generated through ULU signalOS belong to you. Your data lives within your own partitioned system and remains yours—regardless of who manages your campaigns.</p>
+              </details>
+
+              <details>
+                <summary>What platforms does ULU signalOS support?</summary>
+                <p>ULU signalOS currently integrates with leading social media platforms, allowing you to capture and analyze behavioral signals from your content in real time. We are continuously expanding our platform support. Additional integrations—including advanced digital channels and Connected TV (CTV)—are already in development and scheduled to roll out through 2026. As ULU signalOS grows, so does your ability to unify signals and align messaging across your entire marketing ecosystem.</p>
+              </details>
+
+              <details>
+                <summary>What makes ULU signalOS different?</summary>
+                <p>ULU signalOS sits above your existing marketing, capturing behavioral signals from everything you put into the world and turning them into a continuous learning system. It doesn’t replace how you buy media. It makes everything you do smarter, more aligned, and more effective over time.</p>
+              </details>
+            </div>
+
+            <div class="faq-column">
+              <details>
+                <summary>Who is ULU signalOS for?</summary>
+                <p>ULU signalOS is built for:</p>
+                <ul>
+                  <li>Creators who want to produce more content and grow faster.</li>
+                  <li>Small businesses who want to bring marketing in-house.</li>
+                  <li>Enterprises that want complete alignment with all their messaging.</li>
+                  <li>Start-ups and entrepreneurs who use ULU signalOS as their own in-house marketing team.</li>
+                </ul>
+                <p>If you’re posting content and trying to improve results, ULU signalOS is designed for you. It creates scripts and narratives for you according to its proprietary A.I. signal intelligence analysis.</p>
+              </details>
+
+              <details>
+                <summary>Can I work with agencies?</summary>
+                <p>Yes, and you stay in control. You can grant access to one or multiple agencies, team members, or partners. This includes visibility into data, insights, recommendations, and the Brand Voice Command Center, where messaging, scripts, and narratives are developed. You can modify or revoke access at any time.</p>
+              </details>
+
+              <details>
+                <summary>What happens if I change agencies?</summary>
+                <p>Nothing changes for you: Your data, signals, and learning stay with you. You can simply assign a new agency or team without losing history, performance insights, or messaging intelligence.</p>
+              </details>
+
+              <details>
+                <summary>Can I make money with ULU signalOS?</summary>
+                <p>Yes, you can join our affiliate program. When you join, you receive your own affiliate link. This enables you to:</p>
+                <ul>
+                  <li>Share ULU signalOS with other creators</li>
+                  <li>Promote it in your content</li>
+                  <li>Introduce it to business owners who could benefit from it.</li>
+                  <li>Earn a recurring commission for every active subscriber you refer.</li>
+                </ul>
+                <p>The more creators you bring in who stay active, the more recurring income you generate. (Details available at affiliate sign-up.) When you join ULU signalOS, you get:</p>
+                <ul>
+                  <li>Full access to the ULU signalOS platform</li>
+                  <li>Real-time signal insights from your content</li>
+                  <li>A personal affiliate link</li>
+                  <li>A creator Brand Voice Command Center (scripts, examples, guidance)</li>
+                  <li>Ongoing direction on what to create next</li>
+                </ul>
+                <p>The affiliate opportunity is optional, but available if you want to earn from it. You can use ULU signalOS purely as a tool to:</p>
+                <ul>
+                  <li>Improve your content</li>
+                  <li>Understand your audience</li>
+                  <li>Write scripts and storylines for you</li>
+                  <li>Increase performance</li>
+                </ul>
+                <p>Everything is designed to help you improve and monetize your content. ULU signalOS provides real insights into audience behavior and helps you improve content performance. The earning opportunity exists because creators naturally share tools that help them succeed.</p>
+              </details>
+
+              <details>
+                <summary>How quickly will I see results?</summary>
+                <p>You can start generating insights from Day One—using ULU signalOS to guide what you create as you begin collecting signals. On supported platforms, historical data can also be pulled in, giving you an immediate head start based on past performance. The more content you create and analyze, the more accurate and valuable your system becomes.</p>
+              </details>
+
+              <details>
+                <summary>Can I cancel at any time?</summary>
+                <p>Yes. You can cancel your subscription at any time. There are no long-term commitments.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section" id="cta">
+        <div class="container cta-card">
+          <div>
+            <div class="eyebrow">Time to Act</div>
+            <h2>Special 3-month trial offer!</h2>
+            <p><span style="font-size:1.3em;">Limited time introductory offer: 50% off regular subscription price when you sign up for 3-month trial.</span></p>
+          </div>
+          <div class="cta-actions" style="padding:20px 50px 20px 50px;">
+            <a class="primary-btn" href="pricing.html">Sign Up Now</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+<footer class="main-footer">
+  <div class="container footer-grid">
+<div class="footer-brand">
+  <a class="brand" href="#top">
+    <img src="assets/ULUsignalOS-Logo-Audience-Intell-wh-trn.svg" alt="ULU signalOS logo" class="brand-logo">
+  </a>
+
+  <div class="footer-social">
+    <button>
+      <a href="https://www.facebook.com/ulusignalos" target="_blank">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+    </button>
+    <button>
+      <a href="https://linkedin.com/company/ulusignalos" target="_blank">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+    </button>
+    <button>
+      <a href="https://x.com/ulusignalOS" target="_blank">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+    </button>
+
+  </div>
+</div>
+
+    <div>
+      <p><div class="footertext">
+          <div style="min-height:11px;"></div>
+          <span style="color:#dddddd;">Turn audience signals into messaging strategy.</span></div></p>
+    </div>
+
+    <div>
+      <a href="https://ulusignalos.com/privacy-policy.html" target="_self">Privacy</a>
+      <a href="https://ulusignalos.com/terms" target="_self">Terms &amp; Conditions</a>
+    </div>
+
+    <div>
+      <a href="#signup-modal" data-modal-open="signup-modal">Contact</a>
+      <a href="https://ulutechnologies.ai/dataprivacy.html" target="_blank">Data &amp; Brand Safeguards</a>
+    </div>
+  </div>
+</footer>
+
+<div style="min-height:30px;"></div>
+<div style="text-align:center;"><span style="color:#bbbbbb">Copyright © 2026<span id="year"></span> ULU TECHNOLOGIES. All rights reserved.</span></div>
+<div style="min-height:80px;"></div>
+
+  </div>
+
+
+    <div class="modal-backdrop" id="signup-modal" hidden aria-hidden="true">
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="signup-modal-title">
+        <button class="modal-close" type="button" aria-label="Close sign up form" data-modal-close>&times;</button>
+        <div class="modal-media" aria-hidden="true">
+          <div class="modal-media-card">
+            <img src="assets/BBB-creator.jpg" alt="sign up form photo" class="modal-media-image">
+          </div>
+        </div>
+        <div class="modal-content">
+          <span class="modal-kicker">Coming Soon!</span>
+          <h2 id="signup-modal-title">Sign up for launch updates</h2>
+          <p>
+            ULU signalOS is almost ready. Join the notification list and we will let you know when the platform is available.
+          </p>
+
+          <form id="earlyAccessForm" class="modal-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="6b065775-fee7-41cf-8fb9-a6d711935aac">
+            <input type="hidden" name="subject" value="ULU signalOS waitlist signup">
+            <input type="hidden" name="from_name" value="ULU signalOS splash page">
+            <input type="checkbox" name="botcheck" class="form-botcheck" tabindex="-1" autocomplete="off">
+
+            <label class="sr-only" for="signup-name">Name</label>
+            <input id="signup-name" type="text" name="name" placeholder="Name" required>
+
+            <label class="sr-only" for="signup-email">Email</label>
+            <input id="signup-email" type="email" name="email" placeholder="Email" required>
+
+            <label class="sr-only" for="signup-message">Message</label>
+            <textarea id="signup-message" name="message" placeholder="Message" required></textarea>
+
+            <button type="submit" class="modal-submit-btn">Submit</button>
+          </form>
+          
+<div id="formSuccessMessage" class="form-success-message" hidden>
+  <div class="form-success-icon">✓</div>
+  <h3>Thank you!</h3>
+  <p>We’ll let you know when ULU signalOS is ready.</p>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+  <script>
+    (function () {
+      const modal = document.getElementById("signup-modal");
+      if (!modal) return;
+
+      const openButtons = document.querySelectorAll('[data-modal-open="signup-modal"]');
+      const closeButtons = modal.querySelectorAll('[data-modal-close]');
+      const firstField = modal.querySelector('input, textarea, button');
+      let lastFocusedElement = null;
+
+      function openModal(event) {
+        if (event) event.preventDefault();
+        lastFocusedElement = document.activeElement;
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        window.requestAnimationFrame(function () {
+          modal.classList.add('is-visible');
+          if (firstField) firstField.focus();
+        });
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-visible');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        window.setTimeout(function () {
+          modal.hidden = true;
+          if (lastFocusedElement) lastFocusedElement.focus();
+        }, 180);
+      }
+
+      openButtons.forEach(function (button) {
+        button.addEventListener('click', openModal);
+      });
+
+      closeButtons.forEach(function (button) {
+        button.addEventListener('click', closeModal);
+      });
+
+      modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && modal.classList.contains('is-visible')) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+  
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("earlyAccessForm");
+  const successBox = document.getElementById("formSuccessMessage");
+
+  if (!form) return;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.textContent;
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        form.reset();
+        form.hidden = true;
+        successBox.hidden = false;
+      } else {
+        alert(result.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Unable to submit the form right now. Please try again.");
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const tabPanels = document.querySelectorAll(".tab-panel");
+
+  if (!tabButtons.length || !tabPanels.length) return;
+
+  tabButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      const targetId = button.getAttribute("data-tab");
+
+      tabButtons.forEach(function (btn) {
+        btn.classList.remove("active");
+        btn.setAttribute("aria-selected", "false");
+      });
+
+      tabPanels.forEach(function (panel) {
+        panel.classList.remove("active");
+      });
+
+      button.classList.add("active");
+      button.setAttribute("aria-selected", "true");
+
+      const targetPanel = document.getElementById(targetId);
+      if (targetPanel) {
+        targetPanel.classList.add("active");
+      }
+    });
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileNav = document.querySelector(".mobile-nav");
+
+  if (!menuToggle || !mobileNav) return;
+
+  menuToggle.setAttribute("type", "button");
+
+  menuToggle.addEventListener("click", function () {
+    const isOpen = !mobileNav.hidden;
+
+    mobileNav.hidden = isOpen;
+    menuToggle.setAttribute("aria-expanded", String(!isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Open navigation" : "Close navigation");
+  });
+
+  mobileNav.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      mobileNav.hidden = true;
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation");
+    });
+  });
+});
+</script>
+
+</body>
+</html>

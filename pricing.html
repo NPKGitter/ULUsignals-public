@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ULU signalOS Pricing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141837;
+      --bg-soft: rgba(15, 20, 39, 0.72);
+      --panel: rgba(12, 18, 34, 0.6);
+      --panel-strong: rgba(10, 14, 28, 0.9);
+      --border: rgba(255, 255, 255, 0.14);
+      --text: #eef2ff;
+      --muted: #a7b0c6;
+      --primary: #7c8cff;
+      --primary-2: #4fe3ff;
+      --success: #86efac;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --radius: 24px;
+      --container: 1200px;
+      --lime: #95d600;
+      --orange: #fec63f;
+      --blue: #1599ff;
+      --cyan: #4fe3ff;
+      --pink: #c440ff;
+      --dark: #050914;
+      --dark-2: #080d1e;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 16% 0%, rgba(124,140,255,.22), transparent 34%),
+        radial-gradient(circle at 82% 6%, rgba(79,227,255,.12), transparent 30%),
+        linear-gradient(180deg, #141837 0%, #0d132e 44%, #060a16 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      background-image:
+        linear-gradient(rgba(124,140,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,227,255,.055) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 1240px);
+      margin: 0 auto;
+      padding: 18px 20px 30px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 8px 0 18px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 230px;
+    }
+
+    .logo-mark {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 4px;
+      transform: rotate(-15deg);
+    }
+
+    .dot { border-radius: 50%; box-shadow: 0 0 14px currentColor; }
+    .dot:nth-child(1){ color: #7fc91b; background: currentColor; grid-column: 1; grid-row: 2; }
+    .dot:nth-child(2){ color: #ff9400; background: currentColor; grid-column: 2; grid-row: 1; }
+    .dot:nth-child(3){ color: #ff6e27; background: currentColor; grid-column: 3; grid-row: 3; }
+    .dot:nth-child(4){ color: #d4ff40; background: currentColor; grid-column: 2; grid-row: 3; }
+    .dot:nth-child(5){ color: #8edb28; background: currentColor; grid-column: 1; grid-row: 1; opacity: .55; }
+    .dot:nth-child(6){ color: #ffb633; background: currentColor; grid-column: 3; grid-row: 1; opacity: .85; }
+
+    .logo-text strong {
+      display: block;
+      font-size: 1.72rem;
+      line-height: .9;
+      letter-spacing: -.06em;
+      font-weight: 900;
+    }
+
+    .logo-text span {
+      display: block;
+      margin-top: 4px;
+      color: #d7dce9;
+      font-size: .68rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .tagline {
+      color: #d8deef;
+      font-size: 1.08rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tagline strong { color: var(--orange); }
+
+    .hero {
+      text-align: center;
+      padding: 20px 0 10px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 7.5vw, 4.3rem);
+      line-height: .92;
+      letter-spacing: -.015em;
+      font-weight: 900;
+      text-shadow: 0 12px 30px rgba(0,0,0,.45);
+    }
+
+    .hero h1 span { color: var(--orange); }
+
+    .hero p {
+      margin: 12px auto 0;
+      max-width: 720px;
+      color: #e7ebf8;
+      font-size: clamp(1.1rem, 2.3vw, 1.42rem);
+      line-height: 1.35;
+    }
+
+    .pricing-area {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.08fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 58px;
+    }
+
+    .plan-card,
+    .ask-card,
+    .wide-panel {
+      position: relative;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.045), transparent 46%),
+        linear-gradient(180deg, rgba(8,13,30,.96), rgba(2,6,14,.98));
+      border: 2px solid var(--accent);
+      border-radius: 16px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.05) inset,
+        0 0 30px color-mix(in srgb, var(--accent), transparent 68%),
+        var(--shadow);
+      overflow: hidden;
+    }
+
+    .plan-card {
+      padding: 78px 18px 18px;
+      min-height: 625px;
+      overflow: visible;
+    }
+
+    .card-top-icon {
+      position: absolute;
+      left: 50%;
+      top: -46px;
+      transform: translateX(-50%);
+      width: 78px;
+      height: 78px;
+      border-radius: 999px;
+      border: 2px solid var(--accent);
+      display: grid;
+      place-items: center;
+      background: #050914;
+      color: var(--accent);
+      box-shadow: 0 0 28px color-mix(in srgb, var(--accent), transparent 52%);
+    }
+
+    .card-top-icon svg { width: 42px; height: 42px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+    .plan-card h2 {
+      margin: 0;
+      color: var(--accent);
+      text-align: center;
+      font-size: 1.72rem;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: -.03em;
+    }
+
+    .plan-sub {
+      margin: 8px auto 20px;
+      color: var(--accent);
+      text-align: center;
+      max-width: 280px;
+      font-size: 1.05rem;
+      line-height: 1.22;
+      font-weight: 800;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 6px;
+      margin: 0 0 12px;
+    }
+
+    .price-row strong {
+      color: #f7f8ff;
+      font-size: 3.4rem;
+      line-height: .9;
+      letter-spacing: -.06em;
+      font-weight: 900;
+    }
+
+    .price-row span {
+      color: #e3e8f6;
+      font-size: 1.02rem;
+      font-weight: 800;
+      padding-bottom: 6px;
+    }
+
+    .plan-copy {
+      color: #d7deec;
+      font-size: .97rem;
+      line-height: 1.38;
+      min-height: 76px;
+      margin: 0 0 18px;
+    }
+
+    .rule { border: 0; border-top: 1px solid rgba(255,255,255,.23); margin: 14px 0; }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 38px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,.18);
+    }
+
+    .feature-row:last-of-type { border-bottom: 0; }
+
+    .feature-row svg { width: 34px; height: 34px; color: var(--accent); fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .feature-title { color: #e9edf8; text-transform: uppercase; font-weight: 800; font-size: .98rem; }
+    .feature-value { color: var(--accent); font-weight: 900; margin-top: 2px; }
+    .feature-price { color: #dce2f0; font-size: .95rem; text-align: right; white-space: nowrap; }
+    .feature-price small { display: block; color: #dce2f0; font-size: .88rem; margin-top: 4px; }
+
+.pricing-area .plan-card:first-of-type .rule + .feature-row {
+  min-height: 84px;
+  padding-bottom: 22px;
+}
+
+    .ask-mini {
+      margin-top: 16px;
+      padding: 14px;
+      border: 1.5px solid var(--accent);
+      border-radius: 12px;
+      color: var(--accent);
+      box-shadow: inset 0 0 24px color-mix(in srgb, var(--accent), transparent 87%);
+    }
+
+    .ask-mini-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 1.45rem;
+    }
+
+    .ask-mini-head svg { width: 38px; height: 38px; fill: none; stroke: currentColor; stroke-width: 2.1; }
+    .ask-mini small { color: var(--accent); display: block; margin-left: 48px; font-weight: 700; margin-top: -5px; }
+
+    .free-box {
+      margin: 12px 8px 0;
+      padding: 10px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      text-align: center;
+      font-size: 1.28rem;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .free-box span { display: block; color: #f1f5ff; font-size: .92rem; text-transform: none; font-weight: 500; }
+
+    .plan-btn {
+      width: 100%;
+      border: 0;
+      border-radius: 8px;
+      color: #050914;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent), white 12%), var(--accent));
+      min-height: 50px;
+      margin-top: 14px;
+      font: inherit;
+      font-size: 1.18rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 12px 26px color-mix(in srgb, var(--accent), transparent 75%);
+    }
+
+    .cancel { margin-top: 10px; text-align: center; color: #d9deeb; font-size: .96rem; }
+
+    .ask-card {
+      --accent: var(--blue);
+      padding: 0 18px 18px;
+      min-height: 625px;
+      overflow: visible;
+    }
+
+    .wave {
+   position: relative;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+    }
+
+.wave::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('assets/signal-wave-pattern.png') center / 100% 100% no-repeat;
+  opacity: 0.7; /* 80% opacity as requested */
+  z-index: 0;
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+.wave::after {
+  display: none;
+}
+
+    .mic-badge {
+      z-index: 2;
+      position: absolute;
+      top: -48px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 82px;
+      height: 82px;
+      border-radius: 999px;
+      background: #050914;
+      border: 2px solid var(--blue);
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      box-shadow: 0 0 28px rgba(21,153,255,.55);
+    }
+
+    .mic-badge svg { width: 44px; height: 44px; fill: none; stroke: #ffffff; stroke-width: 2.4; }
+
+    .ask-card h2 {
+      margin: 0;
+      text-align: center;
+      font-size: 2.25rem;
+      letter-spacing: -.05em;
+      color: #fff;
+    }
+
+    .ask-card .sub { margin: 4px 0 14px; color: var(--blue); text-align: center; font-size: 1.1rem; font-weight: 800; }
+
+    .ask-free {
+      border: 1px solid var(--blue);
+      border-radius: 8px;
+      padding: 11px;
+      text-align: center;
+      color: #ffffff;
+      font-size: 1.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .ask-free span { display: block; color: #f2f6ff; font-size: .92rem; text-transform: none; font-weight: 500; }
+
+    .ask-pricing-title { color: var(--blue); text-transform: uppercase; font-weight: 900; margin: 16px 0 8px; }
+    .ask-table { border: 1px solid var(--blue); border-radius: 8px; overflow: hidden; }
+    .ask-line { display: flex; justify-content: space-between; gap: 10px; padding: 12px; border-bottom: 1px solid rgba(255,255,255,.2); color: #e8edf8; }
+    .ask-line:last-child { border-bottom: 0; }
+    .ask-line strong { color: #fff; font-size: 1.06rem; }
+    .ask-line small { color: #dce3f4; }
+
+    .ask-text-blue { color: var(--blue); font-size: 1.08rem; font-weight: 800; line-height: 1.25; margin: 16px 0 8px; }
+    .ask-card p { color: #d7deec; line-height: 1.38; margin: 0 0 12px; }
+
+    .ai-graphic {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .ai-graphic svg { width: 250px; max-width: 100%; height: 112px; fill: none; stroke: currentColor; stroke-width: 2.1; filter: drop-shadow(0 0 14px currentColor); }
+
+    .info-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+      margin-bottom: 22px;
+    }
+
+    .wide-panel {
+      --accent: rgba(255,255,255,.18);
+      padding: 16px 20px;
+      border-color: rgba(255,255,255,.18);
+      background: linear-gradient(180deg, rgba(7,12,27,.86), rgba(3,7,15,.92));
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-impact {
+      display: grid;
+      grid-template-columns: 1.08fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .panel-title {
+      margin: 0 0 12px;
+      font-size: 1.55rem;
+      letter-spacing: -.04em;
+      font-weight: 800;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(7, auto);
+      gap: 12px;
+      align-items: center;
+    }
+
+    .step { text-align: center; color: #e3e8f7; font-size: .84rem; line-height: 1.25; }
+    .step .round { width: 58px; height: 58px; margin: 0 auto 8px; border-radius: 999px; border: 2px solid currentColor; display: grid; place-items: center; box-shadow: 0 0 18px currentColor; }
+    .step svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 2; }
+    .arrow { color: #9da7bc; font-size: 1.7rem; }
+
+    .impact {
+      display: grid;
+      grid-template-columns: 1fr 210px;
+      gap: 18px;
+      align-items: center;
+      border-left: 1px solid rgba(255,255,255,.18);
+      padding-left: 26px;
+    }
+
+    .impact h3 { margin: 0 0 8px; font-size: 1.65rem; line-height: 1.08; letter-spacing: -.045em; }
+    .impact p { margin: 0; color: #d7deec; line-height: 1.45; }
+    .chart { 
+        width: 200px;
+        display: block;
+        justify-content: center;   /* horizontal center */
+        align-items: center;       /* vertical alignment */
+        text-align: center;
+       }
+.chart img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto; /* fallback centering */
+}
+    .chart svg { width: 210px; height: 150px; fill: none; stroke: var(--blue); stroke-width: 2.4; filter: drop-shadow(0 0 14px rgba(21,153,255,.6)); }
+
+    .scale-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .scale-item { border: 1px solid rgba(255,255,255,.16); border-radius: 8px; padding: 12px; display: grid; grid-template-columns: 42px 1fr; gap: 10px; align-items: center; color: #dce4f4; font-size: .9rem; }
+    .scale-item svg { width: 36px; height: 36px; fill: none; stroke: currentColor; stroke-width: 2.1; }
+
+    .value-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.28fr) minmax(0, 1.14fr) minmax(0, 1.14fr) minmax(185px, .72fr);
+      gap: 0;
+      align-items: center;
+    }
+
+    .value-box {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 14px;
+      align-items: center;
+      border-right: 1px solid rgba(255,255,255,.18);
+      padding: 0 28px;
+      min-height: 118px;
+    }
+
+    .value-box:first-child {
+      padding-left: 0;
+    }
+
+    .value-box svg {
+      width: 54px;
+      height: 54px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      filter: drop-shadow(0 0 13px currentColor);
+    }
+
+    .value-box h3 {
+      margin: 0 0 6px;
+      font-size: 1.1rem;
+      line-height: 1.18;
+    }
+
+    .value-box p {
+      margin: 0;
+      color: #d9e0ef;
+      line-height: 1.25;
+    }
+
+    .value-box .orange-text {
+      color: var(--orange);
+      font-weight: 800;
+    }
+
+    .footer-logo {
+      min-width: 0;
+      width: 100%;
+      justify-self: stretch;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 28px;
+    }
+
+    .footer-logo img {
+      display: block;
+      width: min(100%, 210px);
+      max-width: 210px;
+      height: auto;
+      filter: drop-shadow(0 0 10px rgba(124,140,255,.18));
+    }
+
+    .bottom-grid { display: grid; grid-template-columns: 1.55fr 1fr 1fr; gap: 20px; align-items: center; }
+.why {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.why svg {
+  width: 60px;
+  height: auto;
+    color: var(--blue);
+  stroke: var(--blue);
+  fill: none;
+}
+
+.why svg path {
+  stroke-width: 3;
+}
+
+.why svg .lock {
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.why svg .cloud-shape {
+  stroke-width: 3;
+  stroke: var(--blue);
+  fill: none;
+}
+
+.why svg .lock-shape {
+  stroke-width: 5;
+  stroke: var(--blue);
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+    .bottom-title { color: var(--blue); font-size: 1.35rem; font-weight: 900; margin: 0 0 6px; }
+    .bullets { margin: 0; padding: 0; list-style: none; color: #d8dfef; font-size: .87rem; }
+    .bullets li::before { content: "⊙"; color: var(--blue); margin-right: 6px; }
+    .slogan { font-size: 1.6rem; line-height: 1.15; font-weight: 900; }
+    .slogan .green { color: var(--lime); }
+    .slogan .orange { color: var(--orange); }
+    .slogan .blue { color: var(--blue); }
+
+    .site-copyright {
+      padding: 26px 0 6px;
+      text-align: center;
+      color: rgba(238, 242, 255, 0.58);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 1050px) {
+      .pricing-area { grid-template-columns: 1fr; }
+      .plan-card, .ask-card { min-height: auto; }
+      .timeline-impact, .impact, .value-row, .bottom-grid { grid-template-columns: 1fr; }
+      .impact { border-left: 0; padding-left: 0; border-top: 1px solid rgba(255,255,255,.16); padding-top: 18px; }
+      .scale-grid { grid-template-columns: repeat(2, 1fr); }
+      .value-box {
+        grid-template-columns: 58px 1fr;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,.16);
+        padding: 0 28px 14px;
+      }
+      .value-box:first-child {
+        padding-left: 28px;
+      }
+      .value-box svg {
+        justify-self: center;
+      }
+      .chart { width: 100%; display:flex;justify-content: center;align-items: center;}
+    .chart img {max-width: 80%;height: auto;margin: 0 auto;}
+      .footer-logo {justify-self: stretch;justify-content: center;min-height: 90px;padding-left: 0;padding-top: 10px;}
+      .footer-logo img {max-width: 190px;}
+      .bottom-grid {
+  grid-template-columns: 1fr;
+  gap: 26px;
+}
+
+.why {
+  grid-template-columns: 40px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.why svg {
+  width: 36px;
+  height: auto;
+  color: var(--blue);
+  stroke: var(--blue);
+  fill: none;
+}
+
+.bottom-grid > div:nth-child(2) {
+  padding-left: 50px;
+}
+
+.slogan {
+  text-align: center;
+  width: 100%;
+}
+    }
+
+    @media (max-width: 720px) {
+      .page { padding: 14px 14px 24px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .tagline { white-space: normal; font-size: .92rem; }
+      .hero h1 { font-size: clamp(2.6rem, 15vw, 4.6rem); }
+      .pricing-area { margin-top: 68px; }
+      .plan-card { padding-top: 58px;margin-top:15px; }
+      .ask-card { margin-top:17px; }
+      .scale-grid { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(90deg); }
+      .wide-panel { padding: 16px; }
+    .chart { width: 100%; display:flex;justify-content: center;align-items: center;}
+    .chart img {max-width: 80%;height: auto;margin: 0 auto; /* fallback centering */}
+  .bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .why {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 8px;
+    align-items: start;
+  }
+
+  .why svg {
+    width: 34px;
+    height: auto;
+      color: var(--blue);
+  stroke: var(--blue);
+  fill: none;
+  }
+
+  .bottom-grid > div:nth-child(2) {
+    padding-left: 42px; 
+  }
+
+  .slogan {
+    text-align: center;
+    width: 100%;
+    justify-self: center;
+  }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="logo" href="index.html" aria-label="ULU signalOS home">
+        <img src="assets/ULUsignalOS-Logo-Audience-Intell-wh-trn.svg" alt="ULU signalOS Logo" />
+      </a>
+      <div class="tagline">The <strong>Intelligence Era</strong> of Marketing™</div>
+    </header>
+
+    <section class="hero">
+      <h1>Build Once. <span>Learn Forever.</span></h1>
+      <p>Every post you create feeds your system. ULU signalOS turns that into continuous learning that sharpens everything you do next.</p>
+    </section>
+
+    <main class="pricing-area" aria-label="Pricing options">
+      <article class="plan-card" style="--accent: var(--lime);">
+        <div class="card-top-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="14" r="8"/><path d="M9 41c2-10 8-16 15-16s13 6 15 16"/></svg>
+        </div>
+        <h2>Creator</h2>
+        <div class="plan-sub">Individuals and influencers: Run your personal learning system.</div>
+        <div class="price-row"><strong>$9.99</strong><span>/month</span></div>
+        <p class="plan-copy">Everything you create feeds ULU signalOS—helping you understand what works and improve every new post, video, or message.</p>
+        <hr class="rule">
+
+        <div class="feature-row">
+          <svg viewBox="0 0 48 48"><circle cx="16" cy="18" r="7"/><circle cx="32" cy="18" r="7"/><path d="M4 40c2-8 6-12 12-12s10 4 12 12"/><path d="M20 40c2-8 6-12 12-12s10 4 12 12"/></svg>
+          <div><div class="feature-title">Seats (Users)</div><div class="feature-value">1 seat</div></div>
+          <div class="feature-price">$9.99/month</div>
+        </div>
+        <div class="feature-row">
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="8" r="4"/><circle cx="10" cy="38" r="4"/><circle cx="38" cy="38" r="4"/><path d="M22 12 12 34M26 12l10 22M14 38h20"/></svg>
+          <div><div class="feature-title">Platforms</div><div class="feature-value">2 platforms</div><div class="feature-value">More than 2</div></div>
+          <div class="feature-price">$9.99/month<small>$19.99/month</small></div>
+        </div>
+        <div class="feature-row">
+          <svg viewBox="0 0 48 48"><ellipse cx="24" cy="12" rx="14" ry="6"/><path d="M10 12v22c0 3 6 6 14 6s14-3 14-6V12"/><path d="M10 23c0 3 6 6 14 6s14-3 14-6"/></svg>
+          <div><div class="feature-title">Data Storage</div><div class="feature-value">500 MB included</div><div class="feature-price" style="text-align:left">$2.00 per additional GB (monthly)</div></div>
+        </div>
+
+        <div class="ask-mini">
+          <div class="ask-mini-head"><svg viewBox="0 0 48 48"><rect x="18" y="6" width="12" height="22" rx="6"/><path d="M10 22c0 8 5 14 14 14s14-6 14-14"/><path d="M24 36v7M17 43h14"/></svg><span>Ask AL</span></div>
+          <small>Your voice. Real answers.</small>
+          <div class="free-box">50% OFF First 3 Mos. <span>On all plans.</span></div>
+        </div>
+        <a href="checklist.html" target="_self">
+        <button class="plan-btn">Start Your System</button></a>
+        <div class="cancel">Cancel anytime</div>
+      </article>
+
+      <article class="plan-card" style="--accent: var(--orange);">
+        <div class="card-top-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M10 40h28"/><path d="M14 40V18h20v22"/><path d="M19 40V29h10v11"/><path d="M20 23h2M26 23h2M34 15l5-5"/><path d="M36 10h5v5"/></svg>
+        </div>
+        <h2>Business</h2>
+        <div class="plan-sub">Turn your marketing into a continuously improving system.</div>
+        <div class="price-row"><strong>$29.99</strong><span>/month</span></div>
+        <p class="plan-copy">ULU signalOS connects your content, campaigns, and messaging—learning from everything and aligning it across channels.</p>
+        <hr class="rule">
+
+        <div class="feature-row">
+          <svg viewBox="0 0 48 48"><circle cx="16" cy="18" r="7"/><circle cx="32" cy="18" r="7"/><path d="M4 40c2-8 6-12 12-12s10 4 12 12"/><path d="M20 40c2-8 6-12 12-12s10 4 12 12"/></svg>
+          <div><div class="feature-title">Seats (Users)</div><div class="feature-value">3 seats</div><div class="feature-value">Extra seats</div></div>
+          <div class="feature-price">Included<small>$29.99 each</small></div>
+        </div>
+        <div class="feature-row">
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="8" r="4"/><circle cx="10" cy="38" r="4"/><circle cx="38" cy="38" r="4"/><path d="M22 12 12 34M26 12l10 22M14 38h20"/></svg>
+          <div><div class="feature-title">Platforms</div><div class="feature-value">3 platforms</div><div class="feature-value">More than 3</div></div>
+          <div class="feature-price">Included<small>$19.99/month</small></div>
+        </div>
+        <div class="feature-row">
+          <svg viewBox="0 0 48 48"><ellipse cx="24" cy="12" rx="14" ry="6"/><path d="M10 12v22c0 3 6 6 14 6s14-3 14-6V12"/><path d="M10 23c0 3 6 6 14 6s14-3 14-6"/></svg>
+          <div><div class="feature-title">Data Storage</div><div class="feature-value">1 GB included</div><div class="feature-price" style="text-align:left">$2.00 per additional GB (monthly)</div></div>
+        </div>
+
+        <div class="ask-mini">
+          <div class="ask-mini-head"><svg viewBox="0 0 48 48"><rect x="18" y="6" width="12" height="22" rx="6"/><path d="M10 22c0 8 5 14 14 14s14-6 14-14"/><path d="M24 36v7M17 43h14"/></svg><span>Ask AL</span></div>
+          <small>Your voice. Real answers.</small>
+          <div class="free-box">50% OFF First 3 Mos. <span>On all plans.</span></div>
+        </div>
+        <a href="checklist.html" target="_self">
+        <button class="plan-btn">Scale Your System</button></a>
+        <div class="cancel">Cancel anytime</div>
+      </article>
+
+      <aside class="ask-card">
+        <div class="wave"><div class="mic-badge" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="18" y="6" width="12" height="22" rx="6"/><path d="M10 22c0 8 5 14 14 14s14-6 14-14"/><path d="M24 36v7M17 43h14"/></svg></div></div>
+        <h2>Ask AL</h2>
+        <div class="sub">Your voice. Real answers.</div>
+        <div style="min-height:22px;"></div>
+        <div class="ask-free">Free for 3 Months <span>On all plans.</span></div>
+        <div class="ask-pricing-title">Pricing (After 3 Months)</div>
+        <div class="ask-table">
+          <div class="ask-line"><span>Up to 2 hours / month</span><strong>$19.99 <small>/month</small></strong></div>
+          <div class="ask-line"><span>Up to 5 hours / month</span><strong>$39.99 <small>/month</small></strong></div>
+          <div class="ask-line"><span>Up to 15 hours / month</span><strong>$79.99 <small>/month</small></strong></div>
+          <div class="ask-line"><span>Unlimited hours</span><strong>$149.99 <small>/month</small></strong></div>
+        </div>
+        <div class="ask-text-blue">Basic voice tools are always available. Ask AL is a deeper, relationship-based experience.</div>
+        <p>Your personal marketing strategist, on demand. Ask AL becomes your sounding board, sparring partner, and strategy guide. Talk through ideas, challenges, and opportunities.</p>
+        <p>Get personalized advice to refine your messaging, sharpen your campaigns, and grow with confidence.</p>
+        <div class="ai-graphic" aria-hidden="true">
+            <img src="assets/pricing-graphic-one.png" alt="Personalized advice" class="ai-graphic" />
+        </div>
+      </aside>
+    </main>
+
+    <section class="info-grid" aria-label="How ULU signalOS works">
+      <div class="wide-panel timeline-impact">
+        <div>
+          <h2 class="panel-title">How ULU signalOS Works Over Time</h2>
+          <div class="timeline">
+            <div class="step" style="color:var(--lime)"><div class="round"><svg viewBox="0 0 48 48"><path d="M12 7h18l6 6v28H12z"/><path d="M30 7v8h8"/><path d="M18 29l5 5 8-13"/></svg></div>Every post contributes to your system</div>
+            <div class="arrow">→</div>
+            <div class="step" style="color:var(--orange)"><div class="round"><svg viewBox="0 0 48 48"><path d="M8 38h32"/><path d="M14 34V22M24 34V12M34 34V18"/><path d="M12 18l10-8 9 7 7-9"/></svg></div>Every interaction creates signals</div>
+            <div class="arrow">→</div>
+            <div class="step" style="color:var(--pink)"><div class="round"><svg viewBox="0 0 48 48"><path d="M17 10c-6 2-8 8-5 13-5 3-5 11 1 14 3 6 12 4 13-2 4 4 13 2 13-6 5-4 2-12-4-13 1-7-7-11-13-7-1-2-3-2-5-1z"/></svg></div>Every signal improves your future messaging</div>
+            <div class="arrow">→</div>
+            <div class="step" style="color:var(--blue)"><div class="round"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M24 24l11-11"/><path d="M37 8h3v3"/><path d="M18 24h6v-6"/></svg></div>Every improvement increases performance</div>
+          </div>
+        </div>
+        <div class="impact">
+          <div>
+            <h3>Actionable intelligence.<br>Real business impact.</h3>
+            <p>ULU signalOS turns insights into action. You’ll know what’s working, why it’s working, and what to do next—faster. Better decisions. Better results. Every time.</p>
+          </div>
+          <div class="chart" aria-hidden="true">
+        <img src="assets/pricing-graph-two.png" alt="signals turned into actionable intelligence" />
+          </div>
+        </div>
+      </div>
+
+      <div class="wide-panel">
+        <h2 class="panel-title">What You’re Scaling</h2>
+        <p style="margin:-6px 0 12px;color:#d7deec">As you grow, you expand:</p>
+        <div class="scale-grid">
+          <div class="scale-item" style="color:var(--lime)"><svg viewBox="0 0 48 48"><circle cx="18" cy="16" r="7"/><circle cx="31" cy="17" r="6"/><path d="M6 40c2-9 7-14 13-14s11 5 13 14"/><path d="M24 39c2-7 6-11 12-11 4 0 7 2 10 6"/></svg><span>The amount of content your system is learning from</span></div>
+          <div class="scale-item" style="color:var(--orange)"><svg viewBox="0 0 48 48"><rect x="7" y="10" width="34" height="22" rx="2"/><path d="M18 39h12M24 32v7"/></svg><span>The number of channels being aligned</span></div>
+          <div class="scale-item" style="color:var(--pink)"><svg viewBox="0 0 48 48"><path d="M8 36h32"/><path d="M13 32V22M24 32V15M35 32V9"/><path d="M9 20l11-8 9 7 10-14"/></svg><span>The depth and speed of optimization</span></div>
+          <div class="scale-item" style="color:var(--blue)"><svg viewBox="0 0 48 48"><ellipse cx="24" cy="12" rx="14" ry="6"/><path d="M10 12v22c0 3 6 6 14 6s14-3 14-6V12"/><path d="M10 23c0 3 6 6 14 6s14-3 14-6"/></svg><span>The size and complexity of your marketing ecosystem</span></div>
+        </div>
+      </div>
+
+      <div class="wide-panel value-row">
+        <div class="value-box" style="color:var(--orange)"><svg viewBox="0 0 60 60"><path d="M10 30c6-12 14-12 24 0s18 12 24 0"/><path d="M10 30c6 12 14 12 24 0s18-12 24 0"/></svg><div><h3>Your entire content library is always stored and analyzed.</h3><p class="orange-text">You control how much of it ULU signalOS actively optimizes at any given time.</p></div></div>
+        <div class="value-box" style="color:var(--blue)"><svg viewBox="0 0 60 60"><path d="M30 6l20 9v15c0 13-8 21-20 25C18 51 10 43 10 30V15z"/><rect x="22" y="27" width="16" height="13" rx="2"/><path d="M25 27v-5c0-7 10-7 10 0v5"/></svg><div><h3>Secure. Private. Yours.</h3><p>Your data is never sold. Your signals are always yours.</p></div></div>
+        <div class="value-box" style="color:var(--orange)"><svg viewBox="0 0 60 60"><path d="M30 6l7 15 16 2-12 11 3 16-14-8-14 8 3-16L7 23l16-2z"/></svg><div><h3>You don’t pay for posts.</h3><p class="orange-text">You invest in a system that learns from everything you create.</p></div></div>
+        <div class="footer-logo logo">
+            <img src="assets/ULUsignalOS-Logo-Audience-Intell-wh-trn.svg" alt="ULU signalOS Logo" />
+        </div>
+      </div>
+
+      <div class="wide-panel bottom-grid">
+        <div class="why"><svg viewBox="0 0 120 90"><path d="M30 66h58c12 0 22-10 22-22S100 22 88 22c-4-14-17-20-30-17S37 17 35 30C22 31 10 41 10 55c0 8 6 11 20 11z"/></path><rect class="lock-shape" x="50" y="42" width="22" height="16" rx="2"/>
+<path class="lock-shape" d="M55 42v-7c0-8 12-8 12 0v7"/></svg><div><h3 class="bottom-title">Why These Charges Exist</h3><ul class="bullets"><li>Seats: Access to the powerful ULUsignalOS platform.</li><li>Platforms: Connections that bring your data in.</li><li>Data: Secure storage for your input data and history.</li><li>Ask AL: Relationship-based A.I. guidance.</li></ul></div></div>
+        <div><h3 class="bottom-title">All plan prices are monthly.</h3><ul class="bullets"><li>Cancel or change anytime.</li><li>No long-term contracts.</li><li>Your data is never sold.</li><li>Your signals are always yours.</li></ul></div>
+        <div class="slogan"><div class="green">Build today.</div><div class="orange">Learn forever.</div><div class="blue">Lead tomorrow.</div></div>
+      </div>
+    </section>
+    <footer class="site-copyright">
+      © 2026 ULU Technologies. All rights reserved.
+    </footer>
+    <div style="min-height:70px;"></div>
+  </div>
+</body>
+</html>
