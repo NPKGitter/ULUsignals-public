@@ -30,6 +30,6 @@ jobs:
             --exclude ".git/*" \
             --exclude ".github/*"
 
-- name: Invalidate CloudFront Cache
-  run: |
-    aws cloudfront create-invalidation --distribution-id E180U27AUKKIF --paths "/*"
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id E180U27AUKKIF --paths "/*"
