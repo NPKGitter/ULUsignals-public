@@ -152,6 +152,28 @@
       background: linear-gradient(90deg, transparent, var(--blue));
     }
 
+.btn {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #ffffff;
+      text-decoration:none;
+      box-shadow: 0 10px 24px rgba(79, 227, 255, 0.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 18px 50px;
+      font-size: 1.5em;
+      font-weight: 700;
+      transition: 0.2s ease;
+      cursor: pointer;
+      border: 1px solid rgba(79, 227, 255, 0.2);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+    
     .eyebrow::after {
       background: linear-gradient(90deg, var(--blue), transparent);
     }
@@ -213,7 +235,24 @@
       pointer-events: none;
       background: linear-gradient(180deg, rgba(255,255,255,.025), transparent 35%);
     }
+    
+    .section-card {
+      background-color: #332288;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 34px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
 
+ .contact-flex .btn {
+    width: auto;           /* prevent full-width stretch */
+    padding: 16px 28px;    /* slightly larger button */
+    font-size: 28px;       /* larger text */
+    margin-top: 10px;      /* spacing from text */
+  }
+  
     .graphic {
       display: block;
       width: 100%;
@@ -239,6 +278,200 @@
       letter-spacing: .03em;
       text-align: center;
     }
+    
+    .modal-backdrop-contact[hidden] { display: none !important; }
+
+  .modal-backdrop-contact {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(3, 10, 24, 0.68);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .18s ease;
+  }
+
+  .modal-backdrop-contact.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  body.modal-open {
+    overflow: hidden !important;
+  }
+
+  .contact-modal-shell {
+    width: min(980px, calc(100vw - 48px));
+    max-height: calc(100vh - 48px);
+    overflow: auto;
+    border-radius: 28px;
+    background: linear-gradient(180deg, #0b2358 0%, #081b49 100%);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 30px 100px rgba(0,0,0,.45);
+    color: #eef2ff;
+    position: relative;
+  }
+
+  .contact-modal-shell::-webkit-scrollbar { width: 10px; }
+  .contact-modal-shell::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.18);
+    border-radius: 999px;
+  }
+
+  .contact-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 999px;
+    background: rgba(3, 10, 24, .46);
+    color: #ffffff;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  .contact-modal-close:hover { background: rgba(255,255,255,.10); }
+
+  .contact-modal-grid {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 28px;
+    padding: 34px;
+    align-items: center;
+  }
+
+  .contact-modal-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-modal-media-card {
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 18px 44px rgba(0,0,0,.28);
+    background: rgba(255,255,255,.04);
+  }
+
+  .contact-modal-media-card img {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+    display: block;
+    border-radius: 0 !important;
+  }
+
+  .contact-modal-content { padding-right: 6px; }
+
+  .contact-modal-kicker {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 6px 12px;
+    background: rgba(143,162,255,.16);
+    border: 1px solid rgba(143,162,255,.22);
+    color: #dfe6ff;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .contact-modal-content h2 {
+    margin: 0 0 10px 0;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: .98;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+  }
+
+  .contact-modal-content p {
+    margin: 0 0 20px 0;
+    color: rgba(255,255,255,.82);
+    font-size: 1.02rem;
+    line-height: 1.55;
+    max-width: 520px;
+  }
+
+  .contact-modal-form {
+    display: grid;
+    gap: 14px;
+  }
+
+  .contact-modal-form input,
+  .contact-modal-form textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    border-radius: 16px;
+    background: rgba(255,255,255,.94);
+    color: #102040;
+    padding: 16px 18px;
+    font: inherit;
+    box-sizing: border-box;
+  }
+
+  .contact-modal-form textarea {
+    min-height: 132px;
+    resize: vertical;
+  }
+
+  .contact-modal-form input::placeholder,
+  .contact-modal-form textarea::placeholder {
+    color: #74819a;
+  }
+
+  .contact-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2px;
+  }
+
+  .contact-modal-submit {
+    min-width: 132px;
+    min-height: 50px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #8fa2ff, #5fe7ff);
+    color: #071120;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 14px 36px rgba(95,231,255,.22);
+  }
+
+  .contact-modal-submit:hover { transform: translateY(-1px); }
+
+  .contact-modal-status {
+    min-height: 22px;
+    color: rgba(255,255,255,.76);
+    font-size: .96rem;
+  }
+
+  .contact-modal-status.success { color: #86efac; }
+  .contact-modal-status.error { color: #fca5a5; }
+  
+  .contact-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
 
     @media (max-width: 720px) {
       header,
@@ -290,6 +523,12 @@
         line-height: 1.6;
       }
 
+        .section-card {
+        padding: 22px;
+        font-size:2.5em;
+        line-height:1.1em;
+      }
+      
       .graphic-wrap {
         margin-top: 36px;
         border-radius: 16px;
@@ -303,6 +542,54 @@
       .graphic {
         border-radius: 10px;
       }
+        .contact-modal-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 22px;
+    }
+
+    .contact-modal-media-card img {
+      min-height: 280px;
+      max-height: 320px;
+    }
+
+    .contact-modal-content { padding-right: 0; }
+      
+  .modal-backdrop-contact { padding: 14px; }
+
+    .contact-modal-shell {
+      width: calc(100vw - 28px);
+      max-height: calc(100vh - 28px);
+      border-radius: 22px;
+    }
+
+    .contact-modal-grid { padding: 18px; }
+
+    .contact-modal-close {
+      top: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .contact-modal-content h2 { font-size: 2.2rem; }
+
+    .contact-modal-actions { justify-content: stretch; }
+
+    .contact-modal-submit { width: 100%; }
+    
+.contact-flex {
+    flex-direction: column;
+    align-items: center;   /* center everything */
+    text-align: center;    /* center text block */
+  }
+
+  .contact-flex .btn {
+    width: auto;           /* prevent full-width stretch */
+    padding: 16px 28px;    /* slightly larger button */
+    font-size: 18px;       /* larger text */
+    margin-top: 10px;      /* spacing from text */
+  }
     }
 
     @media (max-width: 460px) {
@@ -336,9 +623,15 @@
           every communication into clearer signals, stronger insight, and smarter action.
         </p>
 
+  <div>
+      <div style="min-height:40px;"></div>
+    <a class="btn" href="#" data-contact-modal-open="contact">Join the Launch List</a>
+          <div style="min-height:20px;"></div>
+  </div>
+
         <div class="graphic-wrap" aria-label="Every Message Teaches graphic">
           <div class="graphic-frame">
-           <img
+              <img
               class="graphic"
               src="assets/audience-engine-tr.png"
               alt="ULUsignals Every Message Teaches graphic"
@@ -354,5 +647,144 @@
       &copy; 2026 ULU Technologies Inc. All rights reserved.
     </footer>
   </div>
+  
+   <div class="modal-backdrop-contact" id="contactModalBackdrop" hidden aria-hidden="true">
+    <div class="contact-modal-shell" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+      <button class="contact-modal-close" type="button" aria-label="Close contact form" data-contact-modal-close>&times;</button>
+
+      <div class="contact-modal-grid">
+        <div class="contact-modal-media" aria-hidden="true">
+          <div class="contact-modal-media-card">
+            <img src="assets/BBB-creator.jpg" alt="contact form photo">
+          </div>
+        </div>
+
+        <div class="contact-modal-content">
+          <span class="contact-modal-kicker">Early Access</span>
+          <h2 id="contact-modal-title">Reserve My Spot</h2>
+          <p>Be the first to know about ULUsignals.</p>
+
+          <form id="contactModalForm" class="contact-modal-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="6b065775-fee7-41cf-8fb9-a6d711935aac">
+            <input type="hidden" name="subject" value="Incoming message from the Coming Soon page">
+            <input type="hidden" name="redirect" value="https://ulusignals.com">
+            <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+
+            <input id="contactName" type="text" name="name" placeholder="Name" autocomplete="name" required>
+            <input id="contactEmail" type="email" name="email" placeholder="Email" autocomplete="email" required>
+            <textarea id="contactMessage" name="message" placeholder="Message" required></textarea>
+
+            <div id="contactModalStatus" class="contact-modal-status" aria-live="polite"></div>
+
+            <div class="contact-modal-actions">
+              <button type="submit" class="contact-modal-submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!-- end contact modal shell-->
+  </div><!-- end modal backdrop contact -->
+  
+  <script>
+    (function () {
+      var modal = document.getElementById('contactModalBackdrop');
+      if (!modal) return;
+
+      var openButtons = document.querySelectorAll('[data-contact-modal-open="contact"]');
+      var closeButtons = modal.querySelectorAll('[data-contact-modal-close]');
+      var form = document.getElementById('contactModalForm');
+      var status = document.getElementById('contactModalStatus');
+      var firstField = modal.querySelector('input, textarea, button');
+      var lastFocusedElement = null;
+
+      function openModal(event) {
+        if (event) event.preventDefault();
+        lastFocusedElement = document.activeElement;
+        if (status) {
+          status.textContent = '';
+          status.className = 'contact-modal-status';
+        }
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        window.requestAnimationFrame(function () {
+          modal.classList.add('is-visible');
+          if (firstField) firstField.focus();
+        });
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-visible');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        window.setTimeout(function () {
+          modal.hidden = true;
+          if (lastFocusedElement) lastFocusedElement.focus();
+        }, 180);
+      }
+
+      for (var i = 0; i < openButtons.length; i++) {
+        openButtons[i].addEventListener('click', openModal);
+      }
+
+      for (var j = 0; j < closeButtons.length; j++) {
+        closeButtons[j].addEventListener('click', closeModal);
+      }
+
+      modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && modal.classList.contains('is-visible')) {
+          closeModal();
+        }
+      });
+
+      if (!form) return;
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        var formData = new FormData(form);
+        var submitButton = form.querySelector('button[type="submit"]');
+        var originalButtonText = submitButton.textContent;
+
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+        status.textContent = '';
+        status.className = 'contact-modal-status';
+
+        try {
+          var response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+          });
+
+          var result = await response.json();
+
+          if (result.success) {
+            form.reset();
+            status.textContent = 'Thank you. Your message has been sent.';
+            status.className = 'contact-modal-status success';
+            window.setTimeout(function () {
+              closeModal();
+            }, 1200);
+          } else {
+            status.textContent = result.message || 'Something went wrong. Please try again.';
+            status.className = 'contact-modal-status error';
+          }
+        } catch (error) {
+          status.textContent = 'Unable to submit the form right now. Please try again.';
+          status.className = 'contact-modal-status error';
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
